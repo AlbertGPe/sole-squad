@@ -9,7 +9,10 @@ module.exports.list = (req, res, next) => {
 
 module.exports.create = (req, res, next) => {
   Sneaker.create(req.body)
-    .then((sneaker) => res.status(201).json(sneaker))
+    .then((sneaker) => {
+      sneaker.new = false
+      res.status(201).json(sneaker)
+    })
     .catch(next)
 }
 
@@ -22,18 +25,8 @@ module.exports.delete = (req, res, next) => {
 }
 
 module.exports.update = (req, res, next) => {
-  const data = {
-    name: req.body.name,
-    price: req.body.price,
-    brand: req.body.brand,
-    description: req.body.description,
-    details: req.body.details,
-    gender: req.body.gender,
-    release_date: req.body.release_date,
-    images: req.body.images,
-    box_condition: req.body.box_condition
-  }
-  Object.assign(req.sneaker, data);
+  delete req.body.new
+  Object.assign(req.sneaker, req.body);
   req.sneaker.save()
     .then((sneaker) => res.json(sneaker))
     .catch(next)

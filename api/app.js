@@ -4,14 +4,16 @@ const express = require('express');
 const logger = require('morgan');
 const mongoose = require('mongoose')
 const createError = require('http-errors')
+const secure = require('./middlewares/secure.mid');
 
 /* MONGODB CONFIG */
-require('./config/db.config')
+require('./config/db.config');
 
-const app = express()
+const app = express();
 
-app.use(express.json())
-app.use(logger('dev'))
+app.use(express.json());
+app.use(logger('dev'));
+app.use(secure.cleanBody);
 
 app.use('/api/v1', require('./config/routes.config'));
 
@@ -19,14 +21,18 @@ app.use('/api/v1', require('./config/routes.config'));
 app.use((req, res, next) => next(createError(404, 'Route not found')))
 
 app.use((error, req, res, next) => {
+  console.error(error);
   if (error instanceof mongoose.Error.ValidationError){
     error = createError(400, error);
   } else if (error instanceof mongoose.Error.CastError && error.path === '_id') {
     const resourceName = error.model().constructor.modelName;
     error = createError(404, `${resourceName} not found`);
+  } else if (error.message.includes('E11000')) {
+    error = createError(409, 'Username already exists')
   } else if (!error.status) {
     error = createError(500, error);
   }
+  console.error(error);
 
   const data = {
     message: error.message

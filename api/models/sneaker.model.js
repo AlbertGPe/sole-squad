@@ -37,17 +37,36 @@ const sneakerSchema = new Schema({
   },
   box_condition: {
     type: String
+  },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
   }
 }, { 
   timestamps: true,
   toJSON: {
     virtuals: true,
     transform: function (doc, ret) {
+      delete ret.__v;
       ret.id = ret._id;
       delete ret._id;
       return ret;
     }
   }
+})
+
+sneakerSchema.virtual('comments', {
+  ref: 'Comment',
+  localField: '_id',
+  foreignField: 'sneaker',
+  justOne: false
+})
+
+sneakerSchema.virtual('likes', {
+  ref: 'Like',
+  localField: '_id',
+  foreignField: 'sneaker',
+  justOne: false
 })
 
 const Sneaker = mongoose.model('Sneaker', sneakerSchema);
