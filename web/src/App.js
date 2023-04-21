@@ -1,12 +1,11 @@
 import { Routes, Route } from "react-router-dom";
-import Home from "./components/Home/Home";
+import Home from "./components/home/Home";
+import UserForm from "./components/users/users-form/UserForm";
 
 function App() {
   return (
    <>
-    <Routes>
-      <Route path='/' element={<Home />} /> {/* TODO */}
-    </Routes>
+    <UserForm />
    </>
   );
 }

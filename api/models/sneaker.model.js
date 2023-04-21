@@ -24,7 +24,8 @@ const sneakerSchema = new Schema({
     required: "Gender is required"
   },
   new: {
-    type: Boolean
+    type: Boolean,
+    default: true
   },
   release_date: {
     type: String

@@ -56,8 +56,8 @@ module.exports.confirm = (req, res, next) => {
 module.exports.login = (req, res, next) => {
   User.findOne({ username: req.body.username })
     .then((user) => {
-      if (!user) {
-        return next(createError(401, 'Invalid credentials'));
+      if (!user || !req.body.password) {
+        return next(createError(401, 'Invalid credentials, please check the username or password'));
       } 
 
       if (!user.confirm){
