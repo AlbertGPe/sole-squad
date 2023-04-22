@@ -30,7 +30,7 @@ app.use((error, req, res, next) => {
     const resourceName = error.model().constructor.modelName;
     error = createError(404, `${resourceName} not found`);
   } else if (error.message.includes('E11000')) {
-    error = createError(409, 'Username already exists')
+    error = createError(409, 'Username or User email already exists') //TODO -> message for user o email existing
   } else if (!error.status) {
     error = createError(500, error);
   }
@@ -43,7 +43,7 @@ app.use((error, req, res, next) => {
   if (error.errors) {
     const errors = Object.keys(error.errors) //DEVUELVE EN UN ARRAY LAS CLAVES DEL OBJECT
       .reduce((errors, errorKey) => {
-        errors[errorKey] = error.errors[errorKey].message;
+        errors[errorKey] = error.errors[errorKey]?.message || error.errors[errorKey]
         return errors;
       }, {});
     data.errors = errors

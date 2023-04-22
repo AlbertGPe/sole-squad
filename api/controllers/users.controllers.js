@@ -57,17 +57,17 @@ module.exports.login = (req, res, next) => {
   User.findOne({ username: req.body.username })
     .then((user) => {
       if (!user || !req.body.password) {
-        return next(createError(401, 'Invalid credentials, please check the username or password'));
+        return next(createError(401, { errors: { password: 'Invalid credentials, please check the username or password' }}));
       } 
 
       if (!user.confirm){
-        return next(createError(401, 'Please confirm your account'));
+        return next(createError(401, { errors: { username: 'Please confirm your account' }}));
       }
 
       user.checkPassword(req.body.password)
         .then((match) => {
           if (!match) {
-            return next(createError(401, 'Invalid credentials'));
+            return next(createError(401, { errors: { password: 'Invalid credentials, please check the username or password' }}));
           }
 
           const token = jwt.sign({ sub: user.id, exp: (Date.now() / 1000) + 3600}, process.env.TOKEN);

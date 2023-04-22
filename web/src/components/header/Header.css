@@ -1,0 +1,16 @@
+.header {
+  background-color: rgb(68, 64, 64);
+  height: 4rem; 
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center
+}
+
+.header ul {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  list-style: none;
+}
