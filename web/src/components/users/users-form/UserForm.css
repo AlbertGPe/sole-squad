@@ -40,6 +40,19 @@ body {
   background-size: cover;
 }
 
+.signup__thumbnailLogin {
+  position: relative;
+  padding: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  background: url('../../../Images/zapatillas_reportaje_sneakers_585256516.jpg');
+  background-size: 700px 550px;
+  background-repeat: no-repeat;
+  background-position: 8%;
+  /*background-size: cover;*/
+}
+
 .thumbnail__logo,
 .thumbnail__content,
 .thumbnail__links {
@@ -59,11 +72,13 @@ h2 {
 }
 
 label {
+  margin-top: 5px;
   font-size: .85rem;
   text-transform: uppercase;
   font-weight: bold;
   color: #ccc;
 }
+
 .form-control {
   background-color: transparent;
   border-top: 0;
@@ -72,6 +87,7 @@ label {
   border-radius: 0;
   margin-bottom: 15px;
 }
+
 .form-control:focus {
   border-color: #111;
 }
@@ -87,6 +103,11 @@ label {
   text-transform: uppercase;
   color: #fff;
   background: #111;
+}
+
+.btn--form:hover {
+  color: black;
+  background-color: #f3ca4c;
 }
 
 .signup__link {
