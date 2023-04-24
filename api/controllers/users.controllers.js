@@ -3,10 +3,14 @@ const createError = require('http-errors')
 const mailer = require('../config/mailer.config')
 const jwt = require('jsonwebtoken')
 
+const studentConfirmationRequired = process.env.USER_CONFIRMATION_REQUIRED === 'true'
+
 module.exports.create = (req, res, next) => {
   User.create(req.body)
     .then((user) => {
-      mailer.sendConfirmationEmail(user);
+      if (studentConfirmationRequired){
+        mailer.sendConfirmationEmail(user);
+      }
       res.status(201).json(user);
     })
     .catch(next)

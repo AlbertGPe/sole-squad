@@ -1,0 +1,59 @@
+.navbar {
+  padding: 0;
+  height: 3.6rem;
+  background-color: rgb(109, 109, 109);
+}
+
+.navBtn {
+  padding: 17px;
+  border: none;
+  background-color: rgb(109, 109, 109);
+  color: white;
+  font-weight: 400;
+  letter-spacing: .8px;
+}
+
+.navBtn:hover {
+  background-color: white;
+  color: black;
+  padding: 17px;
+  border: none;
+}
+
+.outstanding {
+  background-color: rgb(230, 5, 5);
+  padding: 16px;
+  border: none;
+  color: white;
+  font-weight: 500;
+  letter-spacing: .8px;
+}
+
+.btn--doar {
+  color: #fff;
+  padding-right: 0;
+  background-color: #c0392b;
+  -webkit-clip-path: polygon(0% 0%, 100% 0, 100% 70%, 90% 100%, 0% 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 50%, 75% 100%, 0 100%);
+
+}
+
+.btn--doar:hover { 
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 100% 100%, 0 100%);  
+}
+
+.btn--doar:after {
+  content: "❤";
+  color: #e74c3c;
+  font-family: FontAwesome;
+  display: inline-block;
+  position: relative;
+  right: -55px;
+  transition: all 0.2s ease;
+}
+
+.btn--doar:hover:after {
+  margin: -5px 15px;
+  right: 0px;
+}

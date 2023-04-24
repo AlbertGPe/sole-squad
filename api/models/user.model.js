@@ -13,11 +13,11 @@ const userSchema = new Schema ({
     type: String,
     required: "User email is required",
     match: [/^\S+@\S+\.\S+$/, "Student email must be valid"],
-    unique: true
+    //unique: true
   },
   confirm: {
     type: Boolean,
-    default: true //MUST BE FALSE!
+    default: process.env.USER_CONFIRMATION_REQUIRED === 'false' //MUST BE FALSE!
   },
   password: {
     type: String,

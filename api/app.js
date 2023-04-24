@@ -30,7 +30,8 @@ app.use((error, req, res, next) => {
     const resourceName = error.model().constructor.modelName;
     error = createError(404, `${resourceName} not found`);
   } else if (error.message.includes('E11000')) {
-    error = createError(409, 'Username or User email already exists') //TODO -> message for user o email existing
+    Object.keys(error.keyValue).forEach((key) => error.keyValue[key] = 'Already exists');
+    error = createError(409, { errors: error.keyValue })  //TODO -> Modificar porq sale "message" : "conflict"
   } else if (!error.status) {
     error = createError(500, error);
   }

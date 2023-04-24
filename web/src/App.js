@@ -4,12 +4,14 @@ import LoginPage from "./Pages/LoginPage";
 import RegisterPage from "./Pages/RegisterPage"
 import Home from "./components/home/Home"
 import AuthStore from "./contexts/AuthStore"
+import Navbar from "./components/navbar/Navbar";
 
 function App() {
   return (
    <>
     <AuthStore>
       <Header />
+      <Navbar />
 
       <Routes>
         <Route path="/" element={<Home />} />
