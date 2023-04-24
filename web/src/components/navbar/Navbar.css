@@ -1,12 +1,12 @@
 .navbar {
   padding: 0;
-  height: 3.6rem;
+  height: 3rem;
   background-color: rgb(109, 109, 109);
 }
 
 .navBtn {
-  padding: 17px;
   border: none;
+  padding: 0.8rem;
   background-color: rgb(109, 109, 109);
   color: white;
   font-weight: 400;
@@ -16,13 +16,11 @@
 .navBtn:hover {
   background-color: white;
   color: black;
-  padding: 17px;
   border: none;
 }
 
 .outstanding {
   background-color: rgb(230, 5, 5);
-  padding: 16px;
   border: none;
   color: white;
   font-weight: 500;
