@@ -39,6 +39,9 @@ const sneakerSchema = new Schema({
   box_condition: {
     type: String
   },
+  exclusive: {
+    type: Boolean
+  },
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'

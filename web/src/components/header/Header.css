@@ -18,3 +18,8 @@
 li:hover {
   color: #e74c3c;
 }
+
+a.nav-link {
+  display: flex;
+  align-items: center;
+}
