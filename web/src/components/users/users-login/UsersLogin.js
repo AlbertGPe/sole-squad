@@ -70,7 +70,7 @@ function UsersLogin() {
           <div className="m-t-lg">
             <ul className="list-inline">
               <li>
-                <input className="btn btn--form" type="submit" value="Register" />
+                <input className="btn btn--form" type="submit" value="Login" />
               </li>
               <li>
                 <Link to='/register' className='signup__link'>Not registered yet? Come join the elite!</Link>

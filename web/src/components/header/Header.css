@@ -7,7 +7,7 @@
   align-items: center
 }
 
-.header ul {
+.header > ul {
   margin: 0;
   display: flex;
   align-items: center;

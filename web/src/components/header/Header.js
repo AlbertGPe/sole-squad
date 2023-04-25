@@ -25,13 +25,13 @@ function Header() {
         {(user?.email ? (
           <>
             <div className='dropdown'>
-              <button className='btn' type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <button className='btn dropdown-toggle' type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <img src={userIcon} alt="user-icon" width={'20px'} className='user-icon'/>
               </button>
               <ul className="dropdown-menu">
-                <li><a className="dropdown-item" href="#">My Profile</a></li>
-                <li><a className="dropdown-item" href="#">Edit Profile</a></li>
-                <li><button className='nav-link' onClick={() => logout()}>Logout</button></li>
+                <li><button className='nav-link dropdown-item'>My Profile</button></li>
+                <li><button className='nav-link dropdown-item'>Edit Profile</button></li>
+                <li><button className='nav-link dropdown-item' onClick={() => logout()}>Logout</button></li>
               </ul>
             </div>
             <div>
