@@ -1,0 +1,13 @@
+.filter-group {
+  width: 20rem;
+  margin-top: 24px;
+  margin-left: 10px;
+}
+
+.accordion-button:not(.collapsed) {
+  background: white;
+}
+
+.accordion-button:focus {
+  box-shadow: none;
+}

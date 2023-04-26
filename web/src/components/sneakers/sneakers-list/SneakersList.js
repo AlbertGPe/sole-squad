@@ -3,7 +3,7 @@ import sneakersService from '../../../services/sneakers'
 import SneakerItem from '../sneaker-item/SneakerItem'
 import './SneakersList.css'
 
-function SneakersList() {
+function SneakersList({ search }) {
   const [sneakers, setSneakers] = useState([])
 
   useEffect(() => {
@@ -15,12 +15,24 @@ function SneakersList() {
       .catch(error => console.error(error))
   }, [])
 
+  const sneakersFiltered = sneakers.filter(sneaker => sneaker.name.toLowerCase().includes(search))
+
   return (
-    <div className='sneaker-list'>
-      {sneakers.map((sneaker) => (
-        <div key={sneaker.id}><SneakerItem sneaker={sneaker}/></div>
-      ))}
-    </div>
+    <>
+      {sneakersFiltered.length === 0 ? (
+        <>
+          <h1 className='m-3' style={{color: 'black', textAlign: 'center'}}>No Results</h1>
+        </>
+      ) : (
+        <>
+        <div className='sneaker-list'>
+          {sneakersFiltered.map((sneaker) => (
+            <div key={sneaker.id}><SneakerItem {...sneaker}/></div>
+          ))}
+        </div>
+        </>
+      )}
+    </>   
   )
 }
 

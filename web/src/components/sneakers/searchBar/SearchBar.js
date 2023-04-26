@@ -1,12 +1,17 @@
 import React from 'react'
 import { Input } from 'antd'
+import './SearchBar.css'
 
-function SearchBar() {
+function SearchBar({ search, onSearch }) {
 
+  const handleSearch = (ev) => {
+    onSearch(ev.target.value)
+  }
 
   return (
     <>
-      <Input type="text"  className='m-3'/>  
+      <i class="fa-light fa-magnifying-glass fa-beat-fade"></i>
+      <Input type="text" value={search} onChange={handleSearch} className='w-75 m-4 no-submit' style={{height: '35px'}} placeholder='Search a sneaker'/>
     </>
   )
 }
