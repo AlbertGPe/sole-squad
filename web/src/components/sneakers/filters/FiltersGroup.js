@@ -4,94 +4,94 @@ import './Filters.css'
 function filters() {
   return (
     <div className='filter-group'>
-      <div class="accordion" id="accordionPanelsStayOpenExample">
-        <div class="accordion-item">
-          <h2 class="accordion-header">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+      <div className="accordion" id="accordionPanelsStayOpenExample">
+        <div className="accordion-item">
+          <h2 className="accordion-header">
+            <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
               Gender
             </button>
           </h2>
-          <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
-            <div class="accordion-body">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckAll" />
-                <label class="form-check-label" for="flexCheckAll">
+          <div id="panelsStayOpen-collapseOne" className="accordion-collapse collapse show">
+            <div className="accordion-body">
+              <div className="form-check">
+                <input className="form-check-input" type="checkbox" value="" id="flexCheckAll" />
+                <label className="form-check-label" htmlFor="flexCheckAll">
                   All
                 </label>
               </div>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckMen" />
-                <label class="form-check-label" for="flexCheckMen">
+              <div className="form-check">
+                <input className="form-check-input" type="checkbox" value="" id="flexCheckMen" />
+                <label className="form-check-label" htmlFor="flexCheckMen">
                   Men
                 </label>
               </div>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckWomen" />
-                <label class="form-check-label" for="flexCheckWomen">
+              <div className="form-check">
+                <input className="form-check-input" type="checkbox" value="" id="flexCheckWomen" />
+                <label className="form-check-label" htmlFor="flexCheckWomen">
                   Women
                 </label>
               </div>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckUnisex" />
-                <label class="form-check-label" for="flexCheckUnisex">
+              <div className="form-check">
+                <input className="form-check-input" type="checkbox" value="" id="flexCheckUnisex" />
+                <label className="form-check-label" htmlFor="flexCheckUnisex">
                   Unisex
                 </label>
               </div>
             </div>
           </div>
         </div>
-        <div class="accordion-item">
-          <h2 class="accordion-header">
-          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="true" aria-controls="panelsStayOpen-collapseTwo">
+        <div className="accordion-item">
+          <h2 className="accordion-header">
+          <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="true" aria-controls="panelsStayOpen-collapseTwo">
               Brand
             </button>
           </h2>
-          <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show">
-            <div class="accordion-body">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                <label class="form-check-label" for="flexCheckDefault">
+          <div id="panelsStayOpen-collapseTwo" className="accordion-collapse collapse show">
+            <div className="accordion-body">
+              <div className="form-check">
+                <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                <label className="form-check-label" htmlFor="flexCheckDefault">
                   Do a brand.map
                 </label>
               </div>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                <label class="form-check-label" for="flexCheckDefault">
+              <div className="form-check">
+                <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                <label className="form-check-label" htmlFor="flexCheckDefault">
                   Do a brand.map
                 </label>
               </div>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                <label class="form-check-label" for="flexCheckDefault">
+              <div className="form-check">
+                <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                <label className="form-check-label" htmlFor="flexCheckDefault">
                   Do a brand.map
                 </label>
               </div>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                <label class="form-check-label" for="flexCheckDefault">
+              <div className="form-check">
+                <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                <label className="form-check-label" htmlFor="flexCheckDefault">
                   Do a brand.map
                 </label>
               </div>
             </div>
           </div>
         </div>
-        <div class="accordion-item">
-          <h2 class="accordion-header">
-          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="true" aria-controls="panelsStayOpen-collapseThree">
+        <div className="accordion-item">
+          <h2 className="accordion-header">
+          <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="true" aria-controls="panelsStayOpen-collapseThree">
               Price
             </button>
           </h2>
-          <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse show">
-            <div class="accordion-body">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckLower" />
-                <label class="form-check-label" for="flexCheckLower">
+          <div id="panelsStayOpen-collapseThree" className="accordion-collapse collapse show">
+            <div className="accordion-body">
+              <div className="form-check">
+                <input className="form-check-input" type="checkbox" value="" id="flexCheckLower" />
+                <label className="form-check-label" htmlFor="flexCheckLower">
                   Lower to Higher
                 </label>
               </div>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckHigher" />
-                <label class="form-check-label" for="flexCheckHigher">
+              <div className="form-check">
+                <input className="form-check-input" type="checkbox" value="" id="flexCheckHigher" />
+                <label className="form-check-label" htmlFor="flexCheckHigher">
                   Higher To Lower
                 </label>
               </div>
@@ -99,19 +99,6 @@ function filters() {
           </div>
         </div>
       </div>
-
-      {/*<div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-        <label class="form-check-label" for="flexCheckDefault">
-          Default checkbox
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
-        <label class="form-check-label" for="flexCheckChecked">
-          Checked checkbox
-        </label>
-      </div>*/}
     </div>
   )
 }

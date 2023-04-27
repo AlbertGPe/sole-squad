@@ -23,6 +23,6 @@ module.exports.checkOwner = (req, res, next) => {
   ) {
     next(createError(403, 'Forbidden'));
   } else {
-    next;
+    next();
   }
 }

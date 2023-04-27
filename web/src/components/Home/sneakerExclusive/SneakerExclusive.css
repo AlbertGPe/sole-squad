@@ -1,0 +1,13 @@
+.sneaker-exclusive{
+  width: 25rem;
+  height: 25rem;
+  border: 1px solid black;
+}
+
+.bg-image-exclusive {
+  width: 18rem;
+}
+
+img.cover{
+  object-fit: cover;
+}

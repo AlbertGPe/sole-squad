@@ -6,6 +6,7 @@ import AuthStore from "./contexts/AuthStore"
 import Navbar from "./components/navbar/Navbar";
 import SneakersPage from "./Pages/SneakersPage";
 import HomePage from "./Pages/HomePage";
+import SneakerPage from "./Pages/SneakerPage";
 
 function App() {
   return (
@@ -18,7 +19,9 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path='/sneakers/:id' element={<SneakerPage />} />
         <Route path='/sneakers' element={<SneakersPage />} />
+        
       </Routes>
     </AuthStore>
    </>

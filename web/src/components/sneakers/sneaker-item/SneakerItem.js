@@ -1,8 +1,10 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-function SneakerItem({ name, brand, gender, price, images }) {
+function SneakerItem({ name, brand, gender, price, images, id }) {
+
   return (
-    <div>
+    <Link to={`/sneakers/${id}`} style={{textDecoration: 'none', color: 'black'}}>
       <div>
         <img src={images[0]} alt="sneaker" width={'500px'}/>
       </div>
@@ -12,7 +14,7 @@ function SneakerItem({ name, brand, gender, price, images }) {
         <span className='mt-1'>{gender}</span>
         <span className='mt-1'><b>{`${price}€`}</b></span>
       </div>
-    </div>
+    </Link>
   )
 }
 

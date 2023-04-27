@@ -11,8 +11,19 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  align-content: space-around;
-  padding: 20px;
+  align-content: space-between;
+  padding: 0px 20px;
+}
+
+.btn-home {
+  position: absolute;
+	bottom: 20px;
+	right: 70px;
+  left: 70px;
+  text-align: center;
+  background-color: white;
+  color: black;
+  border: 1px solid black;
 }
 
 .home-links{
@@ -22,6 +33,7 @@
 }
 
 .size-and-button{
+  position: relative;
   width: 400px;
   height: 600px;
   border-radius: 10px;
@@ -32,16 +44,28 @@
 
 .new-sneakers {
   background-image: url('../../Images/New\ Sneakers.jpg');
+  background-repeat: no-repeat;
+  background-position: 60%;
+  background-size: cover;
 }
 
 .second-hand{
   background-image: url('../../Images/SecondHand1.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .community {
   background-image: url('../../Images/Community.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .about-us {
   background-image: url('../../Images/Contact\ Us.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 } 

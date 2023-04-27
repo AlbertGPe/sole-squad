@@ -4,7 +4,6 @@ import SneakerExclusive from './sneakerExclusive/SneakerExclusive'
 
 import headerImg from '../../Images/HomePageHeadeer.jpg'
 import jordanGif from '../../Images/HomePageLeftGif.gif'
-import midImg from '../../Images/HomePage mid.jpg'
 
 import './Home.css'
 import { Link } from 'react-router-dom'
@@ -37,13 +36,13 @@ function Home() {
           <Link to='/sneakers' className='btn btn--form btn-home'>Sneakers</Link>
         </div>
         <div className='size-and-button second-hand'>
-
+          <Link to='' className='btn btn--form btn-home'>Second Hand</Link>
         </div>
         <div className='size-and-button community'>
-
+          <Link to='' className='btn btn--form btn-home'>Community</Link>
         </div>
         <div className='size-and-button about-us'>
-
+          <Link to='' className='btn btn--form btn-home'>About us</Link>
         </div>
       </div>
     </div>
