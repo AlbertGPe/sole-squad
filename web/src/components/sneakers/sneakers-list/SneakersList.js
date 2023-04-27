@@ -1,22 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import sneakersService from '../../../services/sneakers'
+import React from 'react'
 import SneakerItem from '../sneaker-item/SneakerItem'
 import './SneakersList.css'
 
-function SneakersList({ search }) {
-  const [sneakers, setSneakers] = useState([])
-
-  useEffect(() => {
-    sneakersService.list()
-      .then((sneakers) => {
-        const NewSneakers = sneakers.filter(sneaker => sneaker.new === true)
-        setSneakers(NewSneakers)
-      })
-      .catch(error => console.error(error))
-  }, [])
-
-  const sneakersFiltered = sneakers.filter(sneaker => sneaker.name.toLowerCase().includes(search))
-
+function SneakersList({ search, sneakersFiltered }) {
+ 
   return (
     <>
       {sneakersFiltered.length === 0 ? (
