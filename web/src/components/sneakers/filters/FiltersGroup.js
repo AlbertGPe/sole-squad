@@ -2,10 +2,7 @@ import React from 'react'
 import './Filters.css'
 
 
-function Filters({ onFilterGender, onFilterPrice, sneakers }) {
-
-  //TAKE BRAND'S NAME, ONE OF EACH, THERE ARE NO REPEATED VALUES
-  const sneakersBrand = [...new Set(sneakers.map((sneaker) => sneaker.brand))]
+function Filters({ onFilterGender, onFilterPrice, onFilterBrand, sneakersBrand }) {
 
   return (
     <div className='filter-group'>
@@ -51,8 +48,8 @@ function Filters({ onFilterGender, onFilterPrice, sneakers }) {
               {sneakersBrand.map((sneaker, id) => {
               return (
                 <div className="form-check" key={id}> 
-                <input className="form-check-input" type="checkbox" value={sneaker} id="flexCheckDefault" />
-                <label className="form-check-label" htmlFor="flexCheckDefault">
+                <input className="form-check-input" onChange={onFilterBrand} type="checkbox" value={sneaker} id={sneaker} />
+                <label className="form-check-label" htmlFor={sneaker}>
                   {sneaker}
                 </label>
               </div>
