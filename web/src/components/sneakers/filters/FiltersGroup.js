@@ -2,7 +2,10 @@ import React from 'react'
 import './Filters.css'
 
 
-function Filters({ onFilter, sneakers }) {
+function Filters({ onFilterGender, onFilterPrice, sneakers }) {
+
+  //TAKE BRAND'S NAME, ONE OF EACH, THERE ARE NO REPEATED VALUES
+  const sneakersBrand = [...new Set(sneakers.map((sneaker) => sneaker.brand))]
 
   return (
     <div className='filter-group'>
@@ -16,19 +19,19 @@ function Filters({ onFilter, sneakers }) {
           <div id="panelsStayOpen-collapseOne" className="accordion-collapse collapse show">
             <div className="accordion-body">
               <div className="form-check">
-                <input className="form-check-input" onChange={onFilter} type="checkbox" value="Men" id="flexCheckMen" />
+                <input className="form-check-input" onChange={onFilterGender} type="checkbox" value="Men" id="flexCheckMen" />
                 <label className="form-check-label" htmlFor="flexCheckMen">
                   Men
                 </label>
               </div>
               <div className="form-check">
-                <input className="form-check-input" onChange={onFilter} type="checkbox" value="Women" id="flexCheckWomen" />
+                <input className="form-check-input" onChange={onFilterGender} type="checkbox" value="Women" id="flexCheckWomen" />
                 <label className="form-check-label" htmlFor="flexCheckWomen">
                   Women
                 </label>
               </div>
               <div className="form-check">
-                <input className="form-check-input" onChange={onFilter} type="checkbox" value="Unisex" id="flexCheckUnisex" />
+                <input className="form-check-input" onChange={onFilterGender} type="checkbox" value="Unisex" id="flexCheckUnisex" />
                 <label className="form-check-label" htmlFor="flexCheckUnisex">
                   Unisex
                 </label>
@@ -44,14 +47,16 @@ function Filters({ onFilter, sneakers }) {
           </h2>
           <div id="panelsStayOpen-collapseTwo" className="accordion-collapse collapse show">
             <div className="accordion-body">
-              {[...new Set(sneakers.map((sneaker) => (
-                <div className="form-check">
-                <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+              {/* MAP TO SHOW EVERY BRAND NAME */}
+              {sneakersBrand.map((sneaker, id) => {
+              return (
+                <div className="form-check" key={id}> 
+                <input className="form-check-input" type="checkbox" value={sneaker} id="flexCheckDefault" />
                 <label className="form-check-label" htmlFor="flexCheckDefault">
-                  {sneaker.brand}
+                  {sneaker}
                 </label>
               </div>
-                )))]}             
+                )})}             
             </div>
           </div>
         </div>
@@ -64,13 +69,13 @@ function Filters({ onFilter, sneakers }) {
           <div id="panelsStayOpen-collapseThree" className="accordion-collapse collapse show">
             <div className="accordion-body">
               <div className="form-check">
-                <input className="form-check-input" type="checkbox" value="Lower" id="flexCheckLower" />
+                <input className="form-check-input" onChange={onFilterPrice} type="checkbox" value="Lower" id="flexCheckLower" />
                 <label className="form-check-label" htmlFor="flexCheckLower">
                   Lower to Higher
                 </label>
               </div>
               <div className="form-check">
-                <input className="form-check-input" type="checkbox" value="Higher" id="flexCheckHigher" />
+                <input className="form-check-input" onChange={onFilterPrice} type="checkbox" value="Higher" id="flexCheckHigher" />
                 <label className="form-check-label" htmlFor="flexCheckHigher">
                   Higher To Lower
                 </label>

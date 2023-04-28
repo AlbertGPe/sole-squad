@@ -14,6 +14,7 @@ function SneakersPage() {
   const [sneakers, setSneakers] = useState([])
   const [search, setSearch] = useState('');
   const [filterGender, setFilterGender] = useState(genderFilters)
+  const [filterPrice, setFilterPrice] = useState('')
 
   const onSearch = (value) => {
     setSearch(value);
@@ -21,6 +22,15 @@ function SneakersPage() {
 
   const onFilterGender = (ev) => {
     setFilterGender({...filterGender, [ev.target.value]: !filterGender[ev.target.value]})  
+  }  
+  
+  const onFilterPrice = (ev) => {
+    if (filterPrice === 'Lower' || filterPrice === 'Higher'){
+      setFilterPrice('')
+    } else {
+      setFilterPrice(ev.target.value)
+    }
+    console.log(ev.target.value)
   }
 
   //GET SNEAKERS FROM API
@@ -33,19 +43,27 @@ function SneakersPage() {
       .catch(error => console.error(error))
   }, [])
 
-  //FILTER SNEAKERS BY SEARCH
+  //FILTER SNEAKERS
 
   const withOutFilters = Object.keys(filterGender).every(gender => !filterGender[gender])
 
-  const sneakersFiltered = sneakers
+  let sneakersFiltered = sneakers
     .filter(sneaker => sneaker.name.toLowerCase().includes(search))
     .filter(sneaker => withOutFilters || filterGender[sneaker.gender])
+    .sort((a, b) => {
+      if (filterPrice === 'Lower') {
+        return  a.price - b.price;
+      } else if (filterPrice === 'Higher') {
+        return  b.price - a.price
+      } else {
+        return a.name - b.name
+      }
+    })
  
-
   return (
     <div className='d-flex'>
       <div>
-        <Filters onFilter={onFilterGender} sneakers={sneakers}/>
+        <Filters onFilterGender={onFilterGender} onFilterPrice={onFilterPrice} sneakers={sneakers}/>
       </div>
       <div>
         <div>
