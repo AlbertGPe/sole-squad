@@ -6,6 +6,7 @@
 .sidebar {
   margin-top: 20px;
   margin-right: 100px;
+  padding-left: 20px;
   display: block;
   position: relative;
   z-index: 57;
@@ -14,6 +15,7 @@
   will-change: max-width,transition,position;
   backface-visibility: hidden;
   transition: transform .6s ease;
+  border-left: 1px solid #ececec;
 }
 
 .sneaker-content {
@@ -23,9 +25,9 @@
   position: relative;
 }
 
-.sneaker-content > div {
+.div-main-image {
   text-align: center;
-  width: 1000px;
+  width: 100%;
   height: 800px;
 }
 
@@ -56,4 +58,43 @@
   line-height: 1em;
   cursor: pointer;
   width: auto;
+}
+
+.img-sneakers-list {
+  text-align: center;
+  max-height: 500px;
+  min-height: 500px;
+}
+
+.img-sneakers-list-cover {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.accordion-detail {
+ padding: 40px 150px;
+}
+
+.detail-footer-image {
+  width: 150px;
+  height: 150px;
+  border: 1px solid #e0e0e0;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+.detail-footer-images {
+ display: flex;
+ flex-wrap: nowrap;
+ justify-content: center;
+}
+
+.btn-detail-images {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
 }

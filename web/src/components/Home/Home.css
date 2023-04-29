@@ -1,6 +1,6 @@
-/*.homeBody {
-  background-image: url('../../Images/bg.jpg');
-}*/
+.homeBody {
+  background-color: white;
+}
 
 .air-jordan-gif{
   height: 910px;
@@ -8,11 +8,22 @@
 }
 
 .exclusive-sneakers {
+  padding-left: 40px;
+  width: 1120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.two-exclusive-sneakers {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-content: space-between;
-  padding: 0px 20px;
+}
+
+.exclusive {
+  text-align: center;
 }
 
 .btn-home {
@@ -69,3 +80,10 @@
   background-position: center;
   background-size: cover;
 } 
+
+.border-bottom-home {
+  border-bottom: 3px solid #bbb;
+  border-radius: 5px;
+  width: 1500px;
+  margin: 0 200px;
+}

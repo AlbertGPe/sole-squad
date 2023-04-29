@@ -12,7 +12,7 @@ import ProfileEditPage from "./Pages/ProfileEditPage";
 
 function App() {
   return (
-   <>
+   <div className='bg'>
     <AuthStore>
       <Header />
       <Navbar />
@@ -27,7 +27,7 @@ function App() {
         <Route path='users/:id/edit' element={<ProfileEditPage />} />       
       </Routes>
     </AuthStore>
-   </>
+   </div>
   );
 }
 

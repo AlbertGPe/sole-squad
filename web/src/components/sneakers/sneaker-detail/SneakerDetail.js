@@ -10,7 +10,7 @@ import mastercard from '../../../Images/mastercard.jpg'
 import paypal from '../../../Images/paypal.png'
 
 function SneakerDetail() {
-  const  { id }  = useParams();
+  const { id } = useParams();
   const [sneaker, setSneaker] = useState();
   const [mainImage, setMainImage] = useState();
   const [cart, setCart] = useState([])
@@ -20,11 +20,11 @@ function SneakerDetail() {
       try {
         const sneaker = await sneakersService.detail(id)
         setSneaker(sneaker)
-        setMainImage(sneaker.images[0])       
+        setMainImage(sneaker.images[0])
         setCart(JSON.parse(localStorage.getItem('clientCart')))
       } catch (error) {
         console.error(error)
-      } 
+      }
     }
     fetchSneakers();
   }, [id])
@@ -32,7 +32,7 @@ function SneakerDetail() {
   //JSON.parse(localstorage.getItem('clientCart')) -> tendra que ir en un estado
 
   const handleCart = () => {
-    
+
     const item = { sneakerId: id, quantity: 1 }
     if (cart) {
       const isInCart = cart.some((sneaker) => sneaker.sneakerId === id)
@@ -55,18 +55,54 @@ function SneakerDetail() {
     }
   }
 
+  const handleImageClick = (image) => {
+    setMainImage(image)
+  }
+
   return (
     <>
       {!sneaker ? (<MyLoader />) : (
         <div className='detail-page'>
           <div className='sneaker-content'>
-            <div><img src={mainImage} alt={sneaker.name} className='main-image' /></div>
+            <div className='div-main-image'><img src={mainImage} alt={sneaker.name} className='main-image' /></div>
+            <div className='detail-footer-images'>
+              {sneaker.images.map((image) => <div key={image}><button onClick={() => handleImageClick(image)} className='btn-detail-images'><img src={image} alt="" className='detail-footer-image'/></button></div>)}
+              {sneaker.colors_images[0]}
+            </div>
+            <div className="accordion accordion-detail" id="accordionExample">
+              <div className="accordion-item">
+                <h2 className="accordion-header">
+                  <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <strong>Description</strong>
+                  </button>
+                </h2>
+                <div id="collapseOne" className="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                  <div className="accordion-body">
+                    <p>{sneaker.description}</p>
+                  </div>
+                </div>
+              </div>
+              {sneaker.details.length > 0 && 
+              <div className="accordion-item detail-accordion-position">
+                <h2 className="accordion-header">
+                  <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <strong>Details</strong>
+                  </button>
+                </h2>
+                <div id="collapseTwo" className="accordion-collapse collapse">
+                  <div className="accordion-body">
+                    {sneaker.details.map((detail) => <li key={detail}>{detail}</li>)}
+                  </div>
+                </div>
+              </div>
+              }           
+            </div>
           </div>
           <div className='sidebar'>
             <h1>{sneaker.name}</h1>
             <p>{sneaker.brand}</p>
             <b><p>{`${sneaker.price}€`}</p></b>
-            <p>{sneaker.gender}</p>   
+            <p>{sneaker.gender}</p>
             <div>
               <div className='heading-container-sizes'>
                 <b><span>Sizes</span></b>
@@ -76,9 +112,9 @@ function SneakerDetail() {
               </div>
             </div>
             <div>
-              <button className='btn btn--form mt-5' onClick={handleCart}>Add To Cart <img src={arrow} alt="" width={'15px'} className='mb-1 ms-2'/></button>
-              <p className='mt-2'> 
-                <img src={visa} alt="visa" width={'50px'} className='me-2'/>
+              <button className='btn btn--form mt-5' onClick={handleCart}>Add To Cart <img src={arrow} alt="" width={'15px'} className='mb-1 ms-2' /></button>
+              <p className='mt-2'>
+                <img src={visa} alt="visa" width={'50px'} className='me-2' />
                 <img src={mastercard} alt="mastercad" width={'50px'} className='me-2' />
                 <img src={paypal} alt="paypal" width={'100px'} />
               </p>

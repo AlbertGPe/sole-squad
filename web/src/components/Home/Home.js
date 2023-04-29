@@ -4,6 +4,8 @@ import SneakerExclusive from './sneakerExclusive/SneakerExclusive'
 
 import headerImg from '../../Images/HomePageHeadeer.jpg'
 import jordanGif from '../../Images/HomePageLeftGif.gif'
+import exclusive from '../../Images/exclusive.jpg'
+import ps1Sneaker from '../../Images/ps1sneaker.gif'
 
 import './Home.css'
 import { Link } from 'react-router-dom'
@@ -20,21 +22,36 @@ function Home() {
       .catch(error => console.error(error)) 
   }, [])
 
-  const handleClick = () => {
-    console.log(JSON.parse(localStorage.getItem('clientCart')))
-  }
-
   return (
     <div className='homeBody'>
-      <img onClick={handleClick} src={headerImg} alt='sneakers' className='w-100'/>
+      <img src={headerImg} alt='sneakers' className='w-100'/>
       <div className='d-flex p-5'>
         <div>
           <img src={jordanGif} alt="airJordanGif" className='air-jordan-gif'/>
         </div>
         <div className='exclusive-sneakers'>
-          {sneakers.map((sneaker) => <div key={sneaker.id}><SneakerExclusive {...sneaker}/></div>)}
+          <div className='exclusive'>
+            <img src={exclusive} alt="exclusive" />
+          </div>
+          <div className='two-exclusive-sneakers'>
+            {sneakers.slice(0,2).map((sneaker) => <div key={sneaker.id}><SneakerExclusive {...sneaker}/></div>)}
+          </div>
         </div>
       </div>
+      <div className='d-flex p-5'>
+        <div className='exclusive-sneakers'>
+          <div className='exclusive'>
+            <img src={exclusive} alt="exclusive" />
+          </div>
+          <div className='two-exclusive-sneakers'>
+            {sneakers.slice(2,4).map((sneaker) => <div key={sneaker.id}><SneakerExclusive {...sneaker}/></div>)}
+          </div>
+        </div>
+        <div>
+          <img src={ps1Sneaker} alt="airJordanGif" className='air-jordan-gif'/>
+        </div>
+      </div>
+      <div className='border-bottom-home'></div>
       <div className='home-links'>
         <div className='size-and-button new-sneakers'>
           <Link to='/sneakers' className='btn btn--form btn-home'>Sneakers</Link>
