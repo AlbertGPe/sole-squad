@@ -7,6 +7,8 @@ import Navbar from "./components/navbar/Navbar";
 import SneakersPage from "./Pages/SneakersPage";
 import HomePage from "./Pages/HomePage";
 import SneakerPage from "./Pages/SneakerPage";
+import ProfilePage from "./Pages/ProfilePage";
+import ProfileEditPage from "./Pages/ProfileEditPage";
 
 function App() {
   return (
@@ -21,7 +23,8 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path='/sneakers/:id' element={<SneakerPage />} />
         <Route path='/sneakers' element={<SneakersPage />} />
-        
+        <Route path='/users/:id' element={<ProfilePage />} />
+        <Route path='users/:id/edit' element={<ProfileEditPage />} />       
       </Routes>
     </AuthStore>
    </>

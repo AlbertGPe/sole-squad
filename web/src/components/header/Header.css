@@ -23,3 +23,9 @@ a.nav-link {
   display: flex;
   align-items: center;
 }
+
+.dropdown-profile button {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}

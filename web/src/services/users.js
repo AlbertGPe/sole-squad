@@ -6,8 +6,12 @@ const create = (user) => http.post('/register', user)
 const login = user => http.post('login', user)
   .then((res) => res.data)
 
+const detail = (id) => http.get(`/users/${id}`)
+  .then((res) => res.data)
+
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   create,
-  login
+  login,
+  detail
 }

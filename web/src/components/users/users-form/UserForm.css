@@ -73,8 +73,8 @@ body {
 }
 
 .thumbnail__content {align-self: baseline;}
-h1,
-h2 {
+.thumbnail__content h1,
+.thumbnail__content h2 {
   font-weight: 300;
   color: rgba(255,255,255,1);
 }

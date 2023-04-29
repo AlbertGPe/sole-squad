@@ -40,6 +40,6 @@ router.delete('/users/:id', secureMid.auth, users.delete); //x-NEED LOGIN-x
 router.patch('/users/:id', secureMid.auth, users.update); //x-NEED LOGIN-x
 
 
-router.post('/order', secureMid.auth, todo) //x-NEED LOGIN-x, NEED OWNER
+//router.post('/order', secureMid.auth, todo) //x-NEED LOGIN-x, NEED OWNER
 
 module.exports = router;

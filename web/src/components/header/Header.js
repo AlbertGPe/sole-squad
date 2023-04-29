@@ -9,6 +9,9 @@ import loginIcon from '../../Images/login.png'
 import registerIcon from '../../Images/edit.png'
 import userIcon from '../../Images/user.png'
 import bag from '../../Images/shopping-bag (2).png'
+import userProfile from '../../Images/Profile/userprofile.png'
+import editProfile from '../../Images/Profile/editprofile.png'
+import logoutProfile from '../../Images/Profile/logout.png'
 
 const renderHeaderLinkClassName = ({ isActive }) => isActive ? 'nav-link active' : 'nav-link'
 
@@ -28,10 +31,10 @@ function Header() {
               <button className='btn dropdown-toggle' type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <img src={userIcon} alt="user-icon" width={'20px'} className='user-icon'/>
               </button>
-              <ul className="dropdown-menu">
-                <li><button className='nav-link dropdown-item'>My Profile</button></li>
-                <li><button className='nav-link dropdown-item'>Edit Profile</button></li>
-                <li><button className='nav-link dropdown-item' onClick={() => logout()}>Logout</button></li>
+              <ul className="dropdown-menu dropdown-profile p-1">
+                <li className='nav-link dropdown-item p-2'><NavLink to={`/users/${user.id}`} style={{textDecoration: 'none', color: 'black'}} ><img src={userProfile} alt="userProfile" width={'20px'} className='mx-1'/> My Profile</NavLink></li>
+                <li><button className='nav-link dropdown-item p-2'><img src={editProfile} alt="editProfile" width={'20px'} className='mx-1'/> Edit Profile</button></li>
+                <li><button className='nav-link dropdown-item p-2' onClick={() => logout()}><img src={logoutProfile} alt="logoutProfile" width={'20px'} className='mx-1'/> Logout</button></li>
               </ul>
             </div>
             <div>
