@@ -35,7 +35,8 @@ const userSchema = new Schema ({
     ]
   },
   image: {
-    type: String
+    type: String,
+    default: 'https://img.freepik.com/premium-vector/shoes-sneaker-footwear-vector-image-illustration_776624-111.jpg?w=2000'
   },
   community: {
     type: Boolean

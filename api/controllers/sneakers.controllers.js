@@ -11,6 +11,7 @@ module.exports.create = (req, res, next) => {
   Sneaker.create(req.body)
     .then((sneaker) => {
       sneaker.new = false
+      sneaker.user = req.user
       res.status(201).json(sneaker)
     })
     .catch(next)

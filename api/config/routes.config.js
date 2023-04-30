@@ -32,7 +32,7 @@ router.post('logout', secureMid.auth, todo); //x-NEED LOGIN-x
 router.post('/register', users.create);
 
 
-router.get('/users', users.list) //SOLO PARA PRUEBAS, BORRAR AL FINAL
+router.get('/users', users.list)
 
 router.get('/users/:id', usersMid.exists, users.detail); 
 router.get('/users/:id/confirm', usersMid.exists, users.confirm)
@@ -40,6 +40,6 @@ router.delete('/users/:id', secureMid.auth, users.delete); //x-NEED LOGIN-x
 router.patch('/users/:id', secureMid.auth, users.update); //x-NEED LOGIN-x
 
 
-//router.post('/order', secureMid.auth, todo) //x-NEED LOGIN-x, NEED OWNER
+//router.get('/order', secureMid.auth, users.detail) //x-NEED LOGIN-x, NEED OWNER
 
 module.exports = router;

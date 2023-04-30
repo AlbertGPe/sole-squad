@@ -14,6 +14,7 @@ const navigate = useNavigate();
 
   const logout = () => {
     handleUserChange();
+    //localStorage.clear();
     navigate('/login')
   }
 

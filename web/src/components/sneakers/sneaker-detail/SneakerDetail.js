@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import sneakersService from '../../../services/sneakers'
 import MyLoader from '../../Loader/Loader';
 import './SneakerDetail.css'
@@ -11,6 +11,7 @@ import paypal from '../../../Images/paypal.png'
 
 function SneakerDetail() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [sneaker, setSneaker] = useState();
   const [mainImage, setMainImage] = useState();
   const [cart, setCart] = useState([])
@@ -24,12 +25,14 @@ function SneakerDetail() {
         setCart(JSON.parse(localStorage.getItem('clientCart')))
       } catch (error) {
         console.error(error)
+        const statusCode = error.response?.status;
+        if (statusCode === 404) {
+          navigate('/sneakers') //TODO ERROR PAGE
+        }
       }
     }
     fetchSneakers();
   }, [id])
-
-  //JSON.parse(localstorage.getItem('clientCart')) -> tendra que ir en un estado
 
   const handleCart = () => {
 

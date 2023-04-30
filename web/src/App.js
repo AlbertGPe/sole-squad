@@ -9,6 +9,9 @@ import HomePage from "./Pages/HomePage";
 import SneakerPage from "./Pages/SneakerPage";
 import ProfilePage from "./Pages/ProfilePage";
 import ProfileEditPage from "./Pages/ProfileEditPage";
+import CartPage from "./Pages/CartPage";
+import AboutUsPage from "./Pages/AboutUsPage";
+import CommunityPage from "./Pages/CommunityPage";
 
 function App() {
   return (
@@ -23,8 +26,11 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path='/sneakers/:id' element={<SneakerPage />} />
         <Route path='/sneakers' element={<SneakersPage />} />
+        <Route path='/users' element={<CommunityPage />} />
         <Route path='/users/:id' element={<ProfilePage />} />
-        <Route path='users/:id/edit' element={<ProfileEditPage />} />       
+        <Route path='/users/:id/edit' element={<ProfileEditPage />} />  
+        <Route path='/user/cart' element={<CartPage />} /> 
+        <Route path='/about' element={<AboutUsPage />} />  
       </Routes>
     </AuthStore>
    </div>

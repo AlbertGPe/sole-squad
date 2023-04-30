@@ -38,7 +38,7 @@ function Header() {
               </ul>
             </div>
             <div>
-              <button className='btn'><img src={bag} alt="user-icon" width={'20px'} className='user-icon'/></button>
+              <NavLink to={'/user/cart'} ><button className='btn'><img src={bag} alt="user-icon" width={'20px'} className='user-icon'/></button></NavLink>
             </div>
           </>
         ) : (

@@ -60,10 +60,10 @@ function Home() {
           <Link to='' className='btn btn--form btn-home'>Second Hand</Link>
         </div>
         <div className='size-and-button community'>
-          <Link to='' className='btn btn--form btn-home'>Community</Link>
+          <Link to='/users' className='btn btn--form btn-home'>Community</Link>
         </div>
         <div className='size-and-button about-us'>
-          <Link to='' className='btn btn--form btn-home'>About us</Link>
+          <Link to='/about' className='btn btn--form btn-home'>About us</Link>
         </div>
       </div>
     </div>

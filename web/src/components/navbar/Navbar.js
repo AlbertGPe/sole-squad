@@ -8,6 +8,10 @@ function Navbar() {
   const handleClick = (ev) => {
     if (ev.target.innerText === 'Sneakers') {
       navigate('/sneakers')
+    } else if (ev.target.innerText === 'About Us') {
+      navigate('/about')
+    } else if (ev.target.innerText === 'Community') {
+      navigate('/users')
     }
   }
 
@@ -18,8 +22,8 @@ function Navbar() {
           <div className="navbar-nav">
             <button className='navBtn' onClick={handleClick}>Sneakers</button>
             <button className='navBtn'>Second Hand</button>
-            <button className='navBtn'>Community</button>
-            <button className='outstanding btn--doar'>About Us</button>
+            <button className='navBtn' onClick={handleClick}>Community</button>
+            <button className='outstanding btn--doar' onClick={handleClick}>About Us</button>
           </div>
         </div>
       </div>

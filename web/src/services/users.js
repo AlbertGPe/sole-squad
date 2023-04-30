@@ -9,9 +9,13 @@ const login = user => http.post('login', user)
 const detail = (id) => http.get(`/users/${id}`)
   .then((res) => res.data)
 
+const list = () => http.get('/users')
+  .then((res) => res.data)
+
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   create,
   login,
-  detail
+  detail,
+  list
 }

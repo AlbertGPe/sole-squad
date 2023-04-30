@@ -1,0 +1,15 @@
+.body-about {
+  height: 53.5rem;
+  background-image: url('../../Images/bg.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  font-family: "Georgia", Times, serif;
+  text-align: center;
+  padding-top: 40px;
+}
+
+.body-about p {
+  margin-top: 30px;
+  padding: 0 500px;
+}

@@ -19,21 +19,22 @@ function SneakerExclusive({ name, brand, price, images, id }) {
                     </div>
                   </div>
               </div>
-            </Link>
+            
 
-            <div className="box-down">
-              <div className="h-bg">
-                <div className="h-bg-inner"></div>
+              <div className="box-down">
+                <div className="h-bg">
+                  <div className="h-bg-inner"></div>
+                </div>
+
+                {/* TODO CART BUTTON */}
+                <div className="cart">
+                  <span className="price">{`${price}€`}</span>
+                  <span className="add-to-cart">
+                    <span className="txt">Check Details</span>
+                  </span>
+                </div>
               </div>
-
-              {/* TODO CART BUTTON */}
-              <a className="cart" href="#">
-                <span className="price">{`${price}€`}</span>
-                <span className="add-to-cart">
-                  <span className="txt">Add in cart</span>
-                </span>
-              </a>
-            </div>
+            </Link>
           </div>
         </div>
       </div>

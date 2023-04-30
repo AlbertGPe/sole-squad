@@ -16,13 +16,11 @@ module.exports.create = (req, res, next) => {
     .catch(next)
 }
 
- /* DELETE AT THE END */
 module.exports.list = (req, res, next) => {
   User.find()
     .then((users) => res.json(users))
     .catch(next)
 }
-/* -------------------------- */
 
 module.exports.detail = (req, res, next) => res.json(req.user)
 

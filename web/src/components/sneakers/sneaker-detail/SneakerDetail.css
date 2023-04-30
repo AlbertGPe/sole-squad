@@ -1,6 +1,7 @@
 .detail-page {
   color: black;
   display: flex;
+  padding-top: 20px;
 }
 
 .sidebar {

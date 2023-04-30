@@ -31,7 +31,8 @@ const sneakerSchema = new Schema({
     type: String
   },
   images: {
-    type: [String]
+    type: [String],
+    required: "Image is required"
   }, 
   colors_images: {
     type: [String]
