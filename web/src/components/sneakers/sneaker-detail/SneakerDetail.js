@@ -15,16 +15,16 @@ function SneakerDetail() {
   const [sneaker, setSneaker] = useState();
   const [mainImage, setMainImage] = useState();
   const [cart, setCart] = useState([])
+  const [size, setSize] = useState(undefined)
 
   useEffect(() => {
     async function fetchSneakers() {
       try {
-        const sneaker = await sneakersService.detail(id)
+        const sneaker = await sneakersService.detail(id);
         setSneaker(sneaker)
         setMainImage(sneaker.images[0])
         setCart(JSON.parse(localStorage.getItem('clientCart')))
       } catch (error) {
-        console.error(error)
         const statusCode = error.response?.status;
         if (statusCode === 404) {
           navigate('/sneakers') //TODO ERROR PAGE
@@ -36,30 +36,39 @@ function SneakerDetail() {
 
   const handleCart = () => {
 
-    const item = { sneakerId: id, quantity: 1 }
-    if (cart) {
-      const isInCart = cart.some((sneaker) => sneaker.sneakerId === id)
-      if (isInCart) {
-        const newCart = cart.map((sneaker) => {
-          if (sneaker.sneakerId === id) {
-            sneaker.quantity += 1
-          }
-          return sneaker;
-        })
-        setCart(newCart)
-        localStorage.setItem('clientCart', JSON.stringify(newCart))
-      } else {
-        setCart([...cart, item])
-        localStorage.setItem('clientCart', JSON.stringify([...cart, item]))
+    const item = { sneakerId: id, quantity: 1, size: size }
+    
+      if (cart) {
+        if (!size) {
+          console.log('no hay')
+        } else {
+        const isInCart = cart.some((sneaker) => sneaker.sneakerId === id)
+        if (isInCart) {
+          const newCart = cart.map((sneaker) => {
+            if (sneaker.sneakerId === id) {
+              sneaker.quantity += 1
+            }
+            return sneaker;
+          })
+          setCart(newCart)
+          localStorage.setItem('clientCart', JSON.stringify(newCart))
+        } else {
+          setCart([...cart, item])
+          localStorage.setItem('clientCart', JSON.stringify([...cart, item]))
+        }
       }
-    } else {
-      setCart([item])
-      localStorage.setItem('clientCart', JSON.stringify([item]))
-    }
+      } else {
+        setCart([item])
+        localStorage.setItem('clientCart', JSON.stringify([item]))
+      }
   }
 
   const handleImageClick = (image) => {
     setMainImage(image)
+  }
+
+  const handleSizeClick = (size) => {
+    setSize(size)
   }
 
   return (
@@ -101,7 +110,7 @@ function SneakerDetail() {
               }           
             </div>
           </div>
-          <div className='sidebar'>
+          <div className='sidebar sticky-top'>
             <h1>{sneaker.name}</h1>
             <p>{sneaker.brand}</p>
             <b><p>{`${sneaker.price}€`}</p></b>
@@ -111,7 +120,7 @@ function SneakerDetail() {
                 <b><span>Sizes</span></b>
               </div>
               <div className='container-sizes mt-2'>
-                {sneaker.size_range.map((size) => <button key={size} className='button-size'><span>{size}</span></button>)}
+                {sneaker.size_range.map((size) => <button key={size} onClick={() => handleSizeClick(size)} className='button-size'><span>{size}</span></button>)}
               </div>
             </div>
             <div>

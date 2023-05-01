@@ -30,7 +30,7 @@ function SneakerExclusive({ name, brand, price, images, id }) {
                 <div className="cart">
                   <span className="price">{`${price}€`}</span>
                   <span className="add-to-cart">
-                    <span className="txt">Check Details</span>
+                    <span className="txt">View Details</span>
                   </span>
                 </div>
               </div>

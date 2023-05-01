@@ -61,6 +61,16 @@
   width: auto;
 }
 
+.button-size:hover {
+  background-color: black;
+  color: white;
+}
+
+.button-size:focus {
+  background-color: black;
+  color: white;
+}
+
 .img-sneakers-list {
   text-align: center;
   max-height: 500px;
@@ -77,17 +87,20 @@
 }
 
 .detail-footer-image {
-  width: 150px;
-  height: 150px;
+  width: 100%;
+  height: 120px;
   border: 1px solid #e0e0e0;
   margin-top: 20px;
-  margin-right: 20px;
 }
 
 .detail-footer-images {
  display: flex;
  flex-wrap: nowrap;
  justify-content: center;
+}
+
+.detail-footer-images > div {
+  margin: 20px;
 }
 
 .btn-detail-images {
