@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import sneakersService from '../../../services/sneakers'
 import MyLoader from '../../Loader/Loader';
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 import './SneakerDetail.css'
 
 import arrow from '../../../Images/arrow.png'
@@ -17,6 +19,9 @@ function SneakerDetail() {
   const [cart, setCart] = useState([])
   const [size, setSize] = useState(undefined)
 
+  const toastSuccess = () => toast.success('Added to your cart!');
+  const toastWarn  = () => toast.error('Please select a sneaker size');
+
   useEffect(() => {
     async function fetchSneakers() {
       try {
@@ -27,7 +32,7 @@ function SneakerDetail() {
       } catch (error) {
         const statusCode = error.response?.status;
         if (statusCode === 404) {
-          navigate('/sneakers') //TODO ERROR PAGE
+          navigate('/404')
         }
       }
     }
@@ -35,32 +40,39 @@ function SneakerDetail() {
   }, [id])
 
   const handleCart = () => {
-
-    const item = { sneakerId: id, quantity: 1, size: size }
-    
+    setSize(undefined)
+    const item = { sneaker: sneaker, quantity: 1, size: size }
+    if (!size) {
+      toastWarn ();
+    } else {
       if (cart) {
         if (!size) {
-          console.log('no hay')
+          toastWarn ();
         } else {
-        const isInCart = cart.some((sneaker) => sneaker.sneakerId === id)
-        if (isInCart) {
-          const newCart = cart.map((sneaker) => {
-            if (sneaker.sneakerId === id) {
-              sneaker.quantity += 1
-            }
-            return sneaker;
-          })
-          setCart(newCart)
-          localStorage.setItem('clientCart', JSON.stringify(newCart))
-        } else {
-          setCart([...cart, item])
-          localStorage.setItem('clientCart', JSON.stringify([...cart, item]))
+          const isInCart = cart.some((sneaker) => sneaker.sneaker.id === id && sneaker.size === size)
+          if (isInCart) {
+            const newCart = cart.map((sneaker) => {
+              if (sneaker.sneaker.id === id && sneaker.size === size) {
+                sneaker.quantity += 1
+              }
+              return sneaker;
+            })
+            setCart(newCart)
+            localStorage.setItem('clientCart', JSON.stringify(newCart))
+            toastSuccess();
+          } else {
+            setCart([...cart, item])
+            localStorage.setItem('clientCart', JSON.stringify([...cart, item]))
+            toastSuccess();
+          }
         }
-      }
       } else {
         setCart([item])
         localStorage.setItem('clientCart', JSON.stringify([item]))
+        toastSuccess();
       }
+    }
+
   }
 
   const handleImageClick = (image) => {
@@ -78,8 +90,7 @@ function SneakerDetail() {
           <div className='sneaker-content'>
             <div className='div-main-image'><img src={mainImage} alt={sneaker.name} className='main-image' /></div>
             <div className='detail-footer-images'>
-              {sneaker.images.map((image) => <div key={image}><button onClick={() => handleImageClick(image)} className='btn-detail-images'><img src={image} alt="" className='detail-footer-image'/></button></div>)}
-              {sneaker.colors_images[0]}
+              {sneaker.images?.map((image) => <div key={image}><button onClick={() => handleImageClick(image)} className='btn-detail-images'><img src={image} alt="" className='detail-footer-image' /></button></div>)}
             </div>
             <div className="accordion accordion-detail" id="accordionExample">
               <div className="accordion-item">
@@ -94,20 +105,20 @@ function SneakerDetail() {
                   </div>
                 </div>
               </div>
-              {sneaker.details.length > 0 && 
-              <div className="accordion-item detail-accordion-position">
-                <h2 className="accordion-header">
-                  <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    <strong>Details</strong>
-                  </button>
-                </h2>
-                <div id="collapseTwo" className="accordion-collapse collapse">
-                  <div className="accordion-body">
-                    {sneaker.details.map((detail) => <li key={detail}>{detail}</li>)}
+              {sneaker.details.length > 0 &&
+                <div className="accordion-item detail-accordion-position">
+                  <h2 className="accordion-header">
+                    <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                      <strong>Details</strong>
+                    </button>
+                  </h2>
+                  <div id="collapseTwo" className="accordion-collapse collapse">
+                    <div className="accordion-body">
+                      {sneaker.details?.map((detail) => <li key={detail}>{detail}</li>)}
+                    </div>
                   </div>
                 </div>
-              </div>
-              }           
+              }
             </div>
           </div>
           <div className='sidebar sticky-top'>
@@ -120,7 +131,15 @@ function SneakerDetail() {
                 <b><span>Sizes</span></b>
               </div>
               <div className='container-sizes mt-2'>
-                {sneaker.size_range.map((size) => <button key={size} onClick={() => handleSizeClick(size)} className='button-size'><span>{size}</span></button>)}
+                {!sneaker.size_range ? (
+                  <>
+                  <button key={sneaker.size} onClick={() => handleSizeClick(sneaker.size)} className='button-size'><span>{sneaker.size}</span></button>
+                  </>
+                  ) : (
+                  <>
+                    {sneaker.size_range?.map((size) => <button key={size} onClick={() => handleSizeClick(size)} className='button-size'><span>{size}</span></button>)}
+                  </>
+                )}
               </div>
             </div>
             <div>
@@ -132,6 +151,17 @@ function SneakerDetail() {
               </p>
             </div>
           </div>
+          <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
         </div>
       )}
     </>

@@ -1,21 +1,20 @@
 import http from './base-api';
 
 const create = (user) => http.post('/register', user)
-  .then((res) => res.data)
 
-const login = user => http.post('login', user)
-  .then((res) => res.data)
+const login = (user) => http.post('login', user)
 
 const detail = (id) => http.get(`/users/${id}`)
-  .then((res) => res.data)
 
 const list = () => http.get('/users')
-  .then((res) => res.data)
+
+const update = (user, id) => http.patch(`/users/${id}`, user)
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   create,
   login,
   detail,
-  list
+  list, 
+  update
 }

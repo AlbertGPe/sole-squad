@@ -12,6 +12,8 @@ import ProfileEditPage from "./Pages/ProfileEditPage";
 import CartPage from "./Pages/CartPage";
 import AboutUsPage from "./Pages/AboutUsPage";
 import CommunityPage from "./Pages/CommunityPage";
+import Error404Page from "./Pages/Error404Page";
+import SeconHandPage from "./Pages/SeconHandPage";
 
 function App() {
   return (
@@ -30,7 +32,9 @@ function App() {
         <Route path='/users/:id' element={<ProfilePage />} />
         <Route path='/users/:id/edit' element={<ProfileEditPage />} />  
         <Route path='/user/cart' element={<CartPage />} /> 
-        <Route path='/about' element={<AboutUsPage />} />  
+        <Route path='/about' element={<AboutUsPage />} />
+        <Route path='/second-hand' element={<SeconHandPage />} />  
+        <Route path='/*' element={<Error404Page />} />
       </Routes>
     </AuthStore>
    </div>

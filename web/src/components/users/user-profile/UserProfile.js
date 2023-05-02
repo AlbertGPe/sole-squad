@@ -29,9 +29,9 @@ function UserProfile() {
             <div className="picture">
               <img className="img-fluid" src={user.image} alt={user.username} />
             </div>
-            <div>
-              <strong>{user.username}</strong>
-              <p>{user.description}</p>
+            <div className='mt-3'>
+              <strong><p style={{fontSize:'30px'}}>{user.username}</p></strong>
+              <i><p>{user.description}</p></i>
             </div>
             <div>
               {user.sneakers.map((sneaker)=> <img className="img-fluid" src={sneaker.images} alt='' />)}

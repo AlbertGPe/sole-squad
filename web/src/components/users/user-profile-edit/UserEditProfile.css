@@ -1,0 +1,20 @@
+.edit-profile-page{
+  min-height: 53.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-image: url('../../../Images/bg.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.edit-container {
+  background-color: white;
+  width: 40rem;
+  height: auto;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 2rem;
+  margin-top: 8rem;
+}

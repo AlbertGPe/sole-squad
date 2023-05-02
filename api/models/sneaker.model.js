@@ -7,14 +7,16 @@ const sneakerSchema = new Schema({
     required: "Sneaker name is required"
   },
   price: {
-    type: Number
+    type: Number,
+    required: "Price required"
   }, 
   brand: {
     type: String,
     required: "Brand name is required"
   },
   description: {
-    type: String
+    type: String,
+    required: "Description is required"
   },
   details: {
     type: [String]
@@ -25,7 +27,7 @@ const sneakerSchema = new Schema({
   },
   new: {
     type: Boolean,
-    default: true
+    default: false
   },
   release_date: {
     type: String
@@ -42,6 +44,10 @@ const sneakerSchema = new Schema({
   },
   exclusive: {
     type: Boolean
+  },
+  size: {
+    type: Number,
+    required: "Size is required"
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,

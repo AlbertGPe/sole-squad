@@ -4,6 +4,7 @@ const mailer = require('../config/mailer.config')
 const jwt = require('jsonwebtoken')
 
 const studentConfirmationRequired = process.env.USER_CONFIRMATION_REQUIRED === 'true'
+const maxSessionTime = parseInt(process.env.MAX_SESSION_TIME) || 604800;
 
 module.exports.create = (req, res, next) => {
   User.create(req.body)
@@ -72,7 +73,7 @@ module.exports.login = (req, res, next) => {
             return next(createError(401, { errors: { password: 'Invalid credentials, please check the username or password' }}));
           }
 
-          const token = jwt.sign({ sub: user.id, exp: (Date.now() / 1000) + 3600}, process.env.TOKEN);
+          const token = jwt.sign({ sub: user.id, exp: (Date.now() / 1000) + maxSessionTime}, process.env.TOKEN);
           res.json({ token, ...user.toJSON() })
         });
     })

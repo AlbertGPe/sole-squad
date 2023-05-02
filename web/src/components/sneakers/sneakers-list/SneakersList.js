@@ -2,7 +2,7 @@ import React from 'react'
 import SneakerItem from '../sneaker-item/SneakerItem'
 import './SneakersList.css'
 
-function SneakersList({ search, sneakersFiltered }) {
+function SneakersList({ sneakersFiltered }) {
  
   return (
     <div className='bg'>

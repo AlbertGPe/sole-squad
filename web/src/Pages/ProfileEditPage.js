@@ -3,9 +3,9 @@ import UserEditProfile from '../components/users/user-profile-edit/UserEditProfi
 
 function ProfileEditPage() {
   return (
-    <>
+    <div className='edit-profile-page'>
       <UserEditProfile />
-    </>
+    </div>
   )
 }
 

@@ -3,6 +3,10 @@
   padding: 20px;
   display: flex;
   justify-content: center;
+  background-image: url('../../../Images/bg.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .user-container {

@@ -8,10 +8,9 @@ module.exports.list = (req, res, next) => {
 }
 
 module.exports.create = (req, res, next) => {
+  Object.assign(req.body, { user: req.user });
   Sneaker.create(req.body)
     .then((sneaker) => {
-      sneaker.new = false
-      sneaker.user = req.user
       res.status(201).json(sneaker)
     })
     .catch(next)

@@ -28,12 +28,12 @@ function Header() {
         {(user?.email ? (
           <>
             <div className='dropdown'>
-              <button className='btn dropdown-toggle' type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <button className='btn' type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <img src={userIcon} alt="user-icon" width={'20px'} className='user-icon'/>
               </button>
               <ul className="dropdown-menu dropdown-profile p-1">
                 <li className='nav-link dropdown-item p-2'><NavLink to={`/users/${user.id}`} style={{textDecoration: 'none', color: 'black'}} ><img src={userProfile} alt="userProfile" width={'20px'} className='mx-1'/> My Profile</NavLink></li>
-                <li><button className='nav-link dropdown-item p-2'><img src={editProfile} alt="editProfile" width={'20px'} className='mx-1'/> Edit Profile</button></li>
+                <li className='nav-link dropdown-item p-2'><NavLink to={`/users/${user.id}/edit`} style={{textDecoration: 'none', color: 'black'}} ><img src={editProfile} alt="editProfile" width={'20px'} className='mx-1'/> Edit Profile</NavLink></li>
                 <li><button className='nav-link dropdown-item p-2' onClick={() => logout()}><img src={logoutProfile} alt="logoutProfile" width={'20px'} className='mx-1'/> Logout</button></li>
               </ul>
             </div>

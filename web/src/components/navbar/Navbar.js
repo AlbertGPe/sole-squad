@@ -12,6 +12,8 @@ function Navbar() {
       navigate('/about')
     } else if (ev.target.innerText === 'Community') {
       navigate('/users')
+    } else if (ev.target.innerText === 'Second Hand') {
+      navigate('/second-hand')
     }
   }
 
@@ -21,7 +23,7 @@ function Navbar() {
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav">
             <button className='navBtn' onClick={handleClick}>Sneakers</button>
-            <button className='navBtn'>Second Hand</button>
+            <button className='navBtn' onClick={handleClick}>Second Hand</button>
             <button className='navBtn' onClick={handleClick}>Community</button>
             <button className='outstanding btn--doar' onClick={handleClick}>About Us</button>
           </div>

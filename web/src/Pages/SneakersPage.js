@@ -84,7 +84,7 @@ function SneakersPage() {
         <div>
           <SearchBar onSearch={onSearch} search={search} />
         </div>
-        <SneakersList search={search} sneakersFiltered={sneakersFiltered} />
+        <SneakersList sneakersFiltered={sneakersFiltered} />
       </div>
     </div>
   )
