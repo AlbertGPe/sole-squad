@@ -14,8 +14,13 @@ function UserEditProfile() {
 
   const onUpdateSubmit = async () => {
     try{
-      await usersService.update(id, userObj)
-      navigate(`/users/${id}`)
+      const formData = new FormData();
+      formData.append('image', userObj.image[0])
+      formData.append('description', userObj.description);
+      formData.append('instagramUrl', userObj.instagramUrl);
+      console.log(formData)
+      await usersService.update(formData, id)
+      navigate(`/users/${id}`)     
     } catch (error) {
       console.error(error);
     }
@@ -24,14 +29,14 @@ function UserEditProfile() {
   const handleChange = (ev) => {
     setUserObj({...userObj, [ev.target.id] : ev.target.value})
   }
-
+  console.log(userObj)
   return (
     <div className='edit-container'>
       <form onSubmit={handleSubmit(onUpdateSubmit)}>
         <div className="form-group mb-3">
             <label htmlFor="image" className='mb-2'>Profile image</label>
             <div className="">
-                <input type="file" id="image" name="image"/>
+                <input type="file" id="image" name="image" onChange={handleChange}/>
             </div>
         </div>
         <div className="form-group">
@@ -41,7 +46,8 @@ function UserEditProfile() {
               className='form-control'
               id="description" 
               name="description"
-              placeholder="Your description" onChange={handleChange}/>
+              placeholder="Your description" 
+              onChange={handleChange}/>
           </div>
           <div className="form-group">
             <label htmlFor="url">Instagram</label>
@@ -51,6 +57,7 @@ function UserEditProfile() {
               name="instagramUrl"
               className={`form-control ${errors.instagramUrl ? 'is-invalid' : ''}`} 
               placeholder='Your instagram URL' 
+              onChange={handleChange}
               />
               {errors.instagramUrl && <div className='invalid-feedback'>{errors.instagramUrl?.message}</div>}
           </div>       

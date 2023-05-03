@@ -11,7 +11,7 @@ const usersMid = require('../middlewares/users.mid')
 const commentsMid = require('../middlewares/comments.mid')
 const secureMid = require('../middlewares/secure.mid')
 
-const todo = (req, res, next) => res.send('TODO');
+const storage = require('../config/cloudinary.config')
 
 router.get('/sneakers', sneakers.list)
 router.post('/sneakers', secureMid.auth, sneakers.create) //x-NEED LOGIN-x
@@ -27,7 +27,7 @@ router.delete('/sneakers/:id/comment/:commentId', secureMid.auth, sneakersMid.ex
 
 
 router.post('/login', users.login);
-router.post('logout', secureMid.auth, todo); //x-NEED LOGIN-x
+router.post('logout', secureMid.auth); //x-NEED LOGIN-x
 
 router.post('/register', users.create);
 
@@ -37,7 +37,7 @@ router.get('/users', users.list)
 router.get('/users/:id', usersMid.exists, users.detail); 
 router.get('/users/:id/confirm', usersMid.exists, users.confirm)
 router.delete('/users/:id', secureMid.auth, users.delete); //x-NEED LOGIN-x
-router.patch('/users/:id', secureMid.auth, users.update); //x-NEED LOGIN-x
+router.patch('/users/:id', storage.user.single('image'), users.update); //x-NEED LOGIN-x
 
 
 //router.get('/order', secureMid.auth, users.detail) //x-NEED LOGIN-x, NEED OWNER

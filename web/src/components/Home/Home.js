@@ -57,7 +57,7 @@ function Home() {
           <Link to='/sneakers' className='btn btn--form btn-home'>Sneakers</Link>
         </div>
         <div className='size-and-button second-hand'>
-          <Link to='' className='btn btn--form btn-home'>Second Hand</Link>
+          <Link to='/second-hand' className='btn btn--form btn-home'>Second Hand</Link>
         </div>
         <div className='size-and-button community'>
           <Link to='/users' className='btn btn--form btn-home'>Community</Link>

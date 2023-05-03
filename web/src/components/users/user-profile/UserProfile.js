@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import userService from '../../../services/users'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import MyLoader from '../../Loader/Loader'
 import './UserProfile.css'
 
@@ -20,7 +20,6 @@ function UserProfile() {
     fetchUsers();
   }, [id])
 
-   console.log(user)
   return (
     <>
       {!user ? (<MyLoader />) : (
@@ -34,7 +33,7 @@ function UserProfile() {
               <i><p>{user.description}</p></i>
             </div>
             <div>
-              {user.sneakers.map((sneaker)=> <img className="img-fluid" src={sneaker.images} alt='' />)}
+              {user.sneakers.map((sneaker)=> <Link to={`/sneakers/${sneaker.id}`}><img key={sneaker.id} className="img-fluid m-2" src={sneaker.images} alt='' /></Link>)}
             </div>
           </div>
         </div>

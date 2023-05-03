@@ -36,15 +36,16 @@ module.exports.delete = (req, res, next) => {
 }
 
 module.exports.update = (req, res, next) => {
-  if (req.user.id != req.params.id) {
+  /*if (req.user.id != req.params.id) {
     return next(createError(403, 'Forbidden'))
-  }
+  }*/
 
-  Object.assign(req.user, req.body);
+  /*Object.assign(req.user, req.body);
   req.user
     .save()
     .then((user) => res.json(user))
-    .catch(next)
+    .catch(next)*/
+    console.log(req.body)
 }
 
 module.exports.confirm = (req, res, next) => {
