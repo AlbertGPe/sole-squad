@@ -36,16 +36,25 @@ module.exports.delete = (req, res, next) => {
 }
 
 module.exports.update = (req, res, next) => {
-  /*if (req.user.id != req.params.id) {
+  if (req.user.id !== req.params.id) {
     return next(createError(403, 'Forbidden'))
-  }*/
+  }
 
-  /*Object.assign(req.user, req.body);
+  const updateCriterial = {};
+
+  if (req.file) {
+    updateCriterial.image = req.file.path;
+  }
+
+  if (req.body.description) updateCriterial.description = req.body.description;
+
+  if (req.body.instagramUrl) updateCriterial.instagramUrl = req.body.instagramUrl;
+  console.log(updateCriterial)
+  Object.assign(req.user, updateCriterial);
   req.user
     .save()
     .then((user) => res.json(user))
-    .catch(next)*/
-    console.log(req.body)
+    .catch(next)
 }
 
 module.exports.confirm = (req, res, next) => {

@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import React, { useContext, useEffect, useState } from 'react'
+import { useParams, useNavigate, Link } from 'react-router-dom'
 import sneakersService from '../../../services/sneakers'
 import MyLoader from '../../Loader/Loader';
 import { toast, ToastContainer } from 'react-toastify';
+import { AuthContext } from '../../../contexts/AuthStore';
+
 import "react-toastify/dist/ReactToastify.css";
 import './SneakerDetail.css'
 
 import arrow from '../../../Images/arrow.png'
-import visa from '../../../Images/visa.jpg'
-import mastercard from '../../../Images/mastercard.jpg'
-import paypal from '../../../Images/paypal.png'
 
 function SneakerDetail() {
   const { id } = useParams();
@@ -18,6 +17,7 @@ function SneakerDetail() {
   const [mainImage, setMainImage] = useState();
   const [cart, setCart] = useState([])
   const [size, setSize] = useState(undefined)
+  const { user } = useContext(AuthContext)
 
   const toastSuccess = () => toast.success('Added to your cart!');
   const toastWarn  = () => toast.error('Please select a sneaker size');
@@ -143,12 +143,22 @@ function SneakerDetail() {
               </div>
             </div>
             <div>
-              <button className='btn btn--form mt-5' onClick={handleCart}>Add To Cart <img src={arrow} alt="" width={'15px'} className='mb-1 ms-2' /></button>
-              <p className='mt-2'>
-                <img src={visa} alt="visa" width={'50px'} className='me-2' />
-                <img src={mastercard} alt="mastercad" width={'50px'} className='me-2' />
-                <img src={paypal} alt="paypal" width={'100px'} />
-              </p>
+              {user ? (
+                <button className='btn btn--form mt-5' onClick={handleCart}>Add To Cart <img src={arrow} alt="" width={'15px'} className='mb-1 ms-2' /></button>
+              ) : (
+                <div>
+                <div>
+                <button className='btn btn--form mt-5' disabled>Add To Cart <img src={arrow} alt="" width={'15px'} className='mb-1 ms-2' /></button>
+                </div>                
+                  <Link to='/login' className='signup__link'>Log in to add sneakers to your cart</Link>
+                </div>
+              )}
+              <div class="icon-container">
+                    <i class="fa fa-cc-visa me-1" style={{color:'navy'}}></i>
+                    <i class="fa fa-cc-amex me-1" style={{color:'blue'}}></i>
+                    <i class="fa fa-cc-mastercard me-1" style={{color:'red'}}></i>
+                    <i class="fa fa-cc-discover" style={{color:'orange'}}></i>
+                  </div>
             </div>
           </div>
           <ToastContainer

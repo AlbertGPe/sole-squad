@@ -29,10 +29,10 @@ const userSchema = new Schema ({
   },
   instagramUrl: {
     type: String, 
-    match: [
+    /*match: [
       /^https?:\/\/instagram\.com\/[a-z0-9]+$/,
       "Instagram URL must be valid",
-    ]
+    ]*/
   },
   image: {
     type: String,

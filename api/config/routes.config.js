@@ -37,7 +37,7 @@ router.get('/users', users.list)
 router.get('/users/:id', usersMid.exists, users.detail); 
 router.get('/users/:id/confirm', usersMid.exists, users.confirm)
 router.delete('/users/:id', secureMid.auth, users.delete); //x-NEED LOGIN-x
-router.patch('/users/:id', storage.user.single('image'), users.update); //x-NEED LOGIN-x
+router.patch('/users/:id', secureMid.auth, storage.user.single('image'), users.update); //x-NEED LOGIN-x
 
 
 //router.get('/order', secureMid.auth, users.detail) //x-NEED LOGIN-x, NEED OWNER

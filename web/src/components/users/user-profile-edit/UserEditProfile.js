@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate, useParams } from 'react-router-dom';
 import usersService from '../../../services/users'
@@ -8,18 +8,24 @@ import './UserEditProfile.css'
 function UserEditProfile() {
   const { handleSubmit, formState: { errors } } = useForm({ mode: 'onBlur' });
   const { id } = useParams();
-  const { user } = useContext(AuthContext)
+  const { user, onUserChange } = useContext(AuthContext)
   const navigate = useNavigate()
   const [userObj, setUserObj] = useState(user)
+
+  useEffect(() => {
+    if (!user) {
+      navigate('/403')
+    }
+  }, [])
 
   const onUpdateSubmit = async () => {
     try{
       const formData = new FormData();
-      formData.append('image', userObj.image[0])
-      formData.append('description', userObj.description);
-      formData.append('instagramUrl', userObj.instagramUrl);
-      console.log(formData)
-      await usersService.update(formData, id)
+      if (userObj.image) formData.append('image', userObj.image[0])
+      if (userObj.description) formData.append('description', userObj.description);
+      if (userObj.instagramUrl) formData.append('instagramUrl', userObj.instagramUrl);
+      const user = await usersService.update(formData, id);
+      onUserChange({...userObj, user})
       navigate(`/users/${id}`)     
     } catch (error) {
       console.error(error);
@@ -29,7 +35,7 @@ function UserEditProfile() {
   const handleChange = (ev) => {
     setUserObj({...userObj, [ev.target.id] : ev.target.value})
   }
-  console.log(userObj)
+
   return (
     <div className='edit-container'>
       <form onSubmit={handleSubmit(onUpdateSubmit)}>

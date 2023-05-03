@@ -20,7 +20,7 @@ function AuthStore({ children }) {
       localStorage.removeItem('current-user');
       localStorage.removeItem('user-access-token');
     } else {
-      localStorage.setItem('user-acess-token', user.token);
+      localStorage.setItem('user-access-token', user.token);
       localStorage.setItem('current-user', JSON.stringify(user));
     }
     setUser(user);
@@ -28,7 +28,7 @@ function AuthStore({ children }) {
 
   const logout = () => {
     handleUserChange();
-    //localStorage.clear();
+    localStorage.removeItem('clientCart');
     navigate('/login')
   }
 

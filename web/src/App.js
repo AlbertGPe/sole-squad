@@ -16,6 +16,7 @@ import Error404Page from "./Pages/Error404Page";
 import SeconHandPage from "./Pages/SeconHandPage";
 import './index.css'
 import UserPaymentPage from "./Pages/UserPaymentPage";
+import Error403Page from "./Pages/Error403Page";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
         <Route path='/about' element={<AboutUsPage />} />
         <Route path='/second-hand' element={<SeconHandPage />} /> 
         <Route path='/payment' element={<UserPaymentPage />} /> 
+        <Route path='/403' element={<Error403Page />} />
         <Route path='/*' element={<Error404Page />} />
       </Routes>
     </AuthStore>

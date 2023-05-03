@@ -7,10 +7,11 @@ const http = axios.create({
 http.interceptors.request.use(
   config => {
     console.debug('Handling request interceptor');
-    const token = localStorage.getItem('user-acces-token');
+    const token = localStorage.getItem('user-access-token');
     if (token) {
-      config.headers['Autorization'] = `Bearer ${token}`;
+      config.headers['Authorization'] = `Bearer ${token}`;
     }
+    console.log(config)
     return config;
   },
   error => Promise.reject(error)
@@ -22,7 +23,7 @@ http.interceptors.response.use(
     const status = error.response?.status;
     if (status === 401 && !window.location.href.includes('login')) {
       localStorage.removeItem('current-user');
-      localStorage.removeItem('user-acces-token');
+      localStorage.removeItem('user-access-token');
       window.location.href = '/login';
       return Promise.resolve();
     } else {

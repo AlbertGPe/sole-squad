@@ -1,26 +1,32 @@
-import React, { useEffect, useState } from 'react'
-import MyLoader from '../../Loader/Loader';
+import React, { useContext, useEffect, useState } from 'react'
 import './UserCart.css'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../../contexts/AuthStore';
 
 function UserCart() {
 
   const [filteredCart, setFiltereedCart] = useState();
+  const { user } = useContext(AuthContext)
+  const navigate = useNavigate();
   
   useEffect(() => {
+    if (!user) {
+      navigate('/403')
+    }
     setFiltereedCart(JSON.parse(localStorage.getItem('clientCart')))
   }, [])
 
-
-  
-
   return (
     <>
-      {!filteredCart ? (<MyLoader />) : (
+      {!filteredCart ? (
+        <div className='mt-5' style={{fontSize:'30px'}}>
+          <p><strong>Your cart is empty!</strong></p>
+        </div>
+      ) : (
         <div className='container-cart mb-4'>
           <h1 className='text-center mb-5'><b>YOUR CART</b></h1>
           {filteredCart.map((sneaker) => 
-            <div className='d-flex justify-content-between border-bottom'>
+            <div key={sneaker.sneaker.id} className='d-flex justify-content-between border-bottom'>
               <div className='d-flex'>
                 <div className='me-4'>
                   <img src={sneaker.sneaker.images[0]} alt="" width={'200px'} className='my-2'/>

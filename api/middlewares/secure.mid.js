@@ -15,10 +15,10 @@ module.exports.cleanBody = (req, res, next) => {
 }
 
 module.exports.auth = (req, res, next) => {
-  const token = req.headers.authorization?.split(" ")?.[1]; //Bearer TOKEN -> takes TOKEN
-  
+  const token = req.headers.authorization?.split(" ")[1] //Bearer TOKEN -> takes TOKEN
+
   if(!token){
-      return next(createError(401, 'Missing acces token'));
+      return next(createError(401, 'Missing access token'));
     }
 
   try {
