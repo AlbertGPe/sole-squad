@@ -32,8 +32,8 @@ function Header() {
                 <img src={userIcon} alt="user-icon" width={'20px'} className='user-icon'/>
               </button>
               <ul className="dropdown-menu dropdown-profile p-1">
-                <li className='nav-link dropdown-item p-2'><NavLink to={`/users/${user.id}`} style={{textDecoration: 'none', color: 'black'}} ><img src={userProfile} alt="userProfile" width={'20px'} className='mx-1'/> My Profile</NavLink></li>
-                <li className='nav-link dropdown-item p-2'><NavLink to={`/users/${user.id}/edit`} style={{textDecoration: 'none', color: 'black'}} ><img src={editProfile} alt="editProfile" width={'20px'} className='mx-1'/> Edit Profile</NavLink></li>
+                <NavLink to={`/users/${user.id}`} style={{textDecoration: 'none', color: 'black'}} ><li className='nav-link dropdown-item p-2'><img src={userProfile} alt="userProfile" width={'20px'} className='mx-1'/> My Profile</li></NavLink>
+                <NavLink to={`/users/${user.id}/edit`} style={{textDecoration: 'none', color: 'black'}} ><li className='nav-link dropdown-item p-2'><img src={editProfile} alt="editProfile" width={'20px'} className='mx-1'/> Edit Profile</li></NavLink>
                 <li><button className='nav-link dropdown-item p-2' onClick={() => logout()}><img src={logoutProfile} alt="logoutProfile" width={'20px'} className='mx-1'/> Logout</button></li>
               </ul>
             </div>

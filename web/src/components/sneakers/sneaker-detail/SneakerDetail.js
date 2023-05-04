@@ -153,11 +153,11 @@ function SneakerDetail() {
                   <Link to='/login' className='signup__link'>Log in to add sneakers to your cart</Link>
                 </div>
               )}
-              <div class="icon-container">
-                    <i class="fa fa-cc-visa me-1" style={{color:'navy'}}></i>
-                    <i class="fa fa-cc-amex me-1" style={{color:'blue'}}></i>
-                    <i class="fa fa-cc-mastercard me-1" style={{color:'red'}}></i>
-                    <i class="fa fa-cc-discover" style={{color:'orange'}}></i>
+              <div className="icon-container">
+                    <i className="fa fa-cc-visa me-1" style={{color:'navy'}}></i>
+                    <i className="fa fa-cc-amex me-1" style={{color:'blue'}}></i>
+                    <i className="fa fa-cc-mastercard me-1" style={{color:'red'}}></i>
+                    <i className="fa fa-cc-discover" style={{color:'orange'}}></i>
                   </div>
             </div>
           </div>

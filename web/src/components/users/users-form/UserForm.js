@@ -20,7 +20,7 @@ function UserForm() {
         Object.keys(errors)
           .forEach((errorName) => setError(errorName, { message: errors[errorName] }))
       } else {
-        setServerError(error.message) //TODO -> Make a NAVIGATE TO ERROR PAGE
+        setServerError(error.message) //TODO -> Make a NAVIGATE TO ERROR PAGE 500
       }
     }
   }

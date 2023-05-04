@@ -17,6 +17,8 @@ import SeconHandPage from "./Pages/SeconHandPage";
 import './index.css'
 import UserPaymentPage from "./Pages/UserPaymentPage";
 import Error403Page from "./Pages/Error403Page";
+import AddSneakerPage from "./Pages/AddSneakerPage";
+import TicketPage from "./Pages/TicketPage";
 
 function App() {
   return (
@@ -31,6 +33,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path='/sneakers/:id' element={<SneakerPage />} />
         <Route path='/sneakers' element={<SneakersPage />} />
+        <Route path='sneakers/add' element={<AddSneakerPage />} />
         <Route path='/users' element={<CommunityPage />} />
         <Route path='/users/:id' element={<ProfilePage />} />
         <Route path='/users/:id/edit' element={<ProfileEditPage />} />  
@@ -38,6 +41,7 @@ function App() {
         <Route path='/about' element={<AboutUsPage />} />
         <Route path='/second-hand' element={<SeconHandPage />} /> 
         <Route path='/payment' element={<UserPaymentPage />} /> 
+        <Route path='/user-ticket' element={<TicketPage />} />
         <Route path='/403' element={<Error403Page />} />
         <Route path='/*' element={<Error404Page />} />
       </Routes>

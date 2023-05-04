@@ -8,10 +8,20 @@ import { AuthContext } from '../../../contexts/AuthStore';
 function UserPayment() {
   const { register, handleSubmit, setError, formState: { errors } } = useForm({ mode: 'onBlur' });
   const [serverError, setServerError] = useState(undefined);
-  const { user } = useContext(AuthContext)
+  const { user, getLocalStorageCart } = useContext(AuthContext)
   const navigate = useNavigate();
 
-  const toastSuccess = () => toast.success('Done! Thank you for trusting us! ❤')
+  const toastSuccess = () => toast('🦄 Wow so easy!', {
+    position: "top-center",
+    autoClose: false,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+    delay: 3000,
+  });
 
   useEffect(() => {
     if (!user) {
@@ -21,8 +31,10 @@ function UserPayment() {
 
   const handleSubmitPayment = async () => {
     try {
-      localStorage.removeItem('clientCart');
-      navigate('/')
+      getLocalStorageCart();
+      localStorage.removeItem('clientCart')
+      navigate('/user-ticket')
+      toastSuccess();
     } catch (error) {
       const errors = error.response?.data?.errors
       if (errors) {
@@ -33,7 +45,7 @@ function UserPayment() {
       }
     }
   }
-  console.log(errors)
+
   return (
     <div className="payment-body">
       <div className="row-payment">
@@ -148,7 +160,7 @@ function UserPayment() {
                 </div>
 
               </div>
-              <input type="submit" value="Continue to checkout" className="btn-payment" />
+              <input type="submit" value="Pay" className="btn-payment" />
             </form>
           </div>
         </div>

@@ -5,6 +5,7 @@ const AuthContext = createContext();
 
 function AuthStore({ children }) {
   const [user, setUser] = useState();
+  const [cart, setCart] = useState();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -32,8 +33,12 @@ function AuthStore({ children }) {
     navigate('/login')
   }
 
+  const getLocalStorageCart = () => {
+    setCart(JSON.parse(localStorage.getItem('clientCart')))
+  }
+
   return (
-    <AuthContext.Provider value={{ user, onUserChange: handleUserChange, logout }}>
+    <AuthContext.Provider value={{ user, onUserChange: handleUserChange, logout, getLocalStorageCart, cart }}>
       {children}
     </AuthContext.Provider>
   )

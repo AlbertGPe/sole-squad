@@ -8,6 +8,7 @@ module.exports.list = (req, res, next) => {
 }
 
 module.exports.create = (req, res, next) => {
+  console.log(req.body)
   Object.assign(req.body, { user: req.user });
   Sneaker.create(req.body)
     .then((sneaker) => {
