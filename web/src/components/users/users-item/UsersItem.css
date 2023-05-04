@@ -19,7 +19,9 @@
   width: 300px;
   height: 350px;
   margin: 30px;
-  border-radius: 10px;
+  border: 2px solid black;
+  border-color: #fff;
+  border-image: linear-gradient(-45deg, #3498db, #e67e22) 1
 }
 
 .our-team .picture {

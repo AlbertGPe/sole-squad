@@ -16,7 +16,7 @@ function UserTicket() {
  
   return (
     <div className='container-cart mb-4'>
-      <h4 className='text-center mb-5'><i className="fa-solid fa-circle-check me-2" style={{color: '#44bb35'}}></i><b>Purchase completed. Thank you for trusting us!</b></h4>
+      <h4 className='text-center mb-5'><i className="fa-solid fa-circle-check me-2" style={{color: '#44bb35'}}></i><b>Purchase completed! Thank you for trusting us!</b></h4>
       <h5 className='text-center'><strong>Your purchase:</strong></h5>
       {cartPayed?.map((sneaker) =>
         <div key={sneaker.sneaker.id} className='d-flex justify-content-between border-bottom'>

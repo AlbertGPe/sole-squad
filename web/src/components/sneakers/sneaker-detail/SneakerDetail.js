@@ -83,6 +83,11 @@ function SneakerDetail() {
     setSize(size)
   }
 
+  const handleDelete = () => {
+    sneakersService.remove(id)
+    navigate(`/users/${user.id}`)
+  }
+
   return (
     <>
       {!sneaker ? (<MyLoader />) : (
@@ -122,6 +127,7 @@ function SneakerDetail() {
             </div>
           </div>
           <div className='sidebar sticky-top'>
+            {sneaker.user.includes(user.id) && <button className='btn btn-danger' onClick={handleDelete}>Delete</button>}
             <h1>{sneaker.name}</h1>
             <p>{sneaker.brand}</p>
             <b><p>{`${sneaker.price}€`}</p></b>

@@ -16,10 +16,9 @@ module.exports.exists = (req, res, next) => {
 }
 
 module.exports.checkOwner = (req, res, next) => {
+  console.log(req.sneaker.user)
   if (
     !req.sneaker.user
-      .map((user) => user.toString())
-      .includes(req.user.id.toString())
   ) {
     next(createError(403, 'Forbidden'));
   } else {

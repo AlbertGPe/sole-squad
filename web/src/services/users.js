@@ -10,11 +10,14 @@ const list = () => http.get('/users')
 
 const update = (user, id) => http.patch(`/users/${id}`, user)
 
+const remove = (id) => http.delete(`/users/${id}`)
+
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   create,
   login,
   detail,
   list, 
-  update
+  update,
+  remove
 }
