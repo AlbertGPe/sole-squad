@@ -83,9 +83,13 @@ function SneakerDetail() {
     setSize(size)
   }
 
-  const handleDelete = () => {
-    sneakersService.remove(id)
-    navigate(`/users/${user.id}`)
+  const handleDelete = async () => {
+    try {
+      await sneakersService.remove(id)
+      navigate(`/users/${user.id}`)
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   return (
@@ -98,6 +102,7 @@ function SneakerDetail() {
               {sneaker.images?.map((image) => <div key={image}><button onClick={() => handleImageClick(image)} className='btn-detail-images'><img src={image} alt="" className='detail-footer-image' /></button></div>)}
             </div>
             <div className="accordion accordion-detail" id="accordionExample">
+              {sneaker.description && 
               <div className="accordion-item">
                 <h2 className="accordion-header">
                   <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -109,7 +114,8 @@ function SneakerDetail() {
                     <p>{sneaker.description}</p>
                   </div>
                 </div>
-              </div>
+              </div>}
+              
               {sneaker.details.length > 0 &&
                 <div className="accordion-item detail-accordion-position">
                   <h2 className="accordion-header">
@@ -124,10 +130,24 @@ function SneakerDetail() {
                   </div>
                 </div>
               }
+              {sneaker.comments.length > 0 &&
+                <div className="accordion-item detail-accordion-position">
+                  <h2 className="accordion-header">
+                    <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                      <strong>Comments</strong>
+                    </button>
+                  </h2>
+                  <div id="collapseThree" className="accordion-collapse collapse">
+                    <div className="accordion-body">
+                      {sneaker.comments?.map((comment, id) => <div key={comment.text}>#{id} - {comment.text}</div>)}
+                    </div>
+                  </div>
+                </div>
+              }
             </div>
           </div>
           <div className='sidebar sticky-top'>
-            {sneaker.user.includes(user.id) && <button className='btn btn-danger' onClick={handleDelete}>Delete</button>}
+            {sneaker.user?.includes(user.id) && <button className='btn btn-danger' onClick={handleDelete}>Delete</button>}
             <h1>{sneaker.name}</h1>
             <p>{sneaker.brand}</p>
             <b><p>{`${sneaker.price}€`}</p></b>

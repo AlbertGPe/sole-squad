@@ -33,7 +33,11 @@ function UserEditProfile() {
   }
 
   const handleChange = (ev) => {
-    setUserObj({...userObj, [ev.target.id] : ev.target.value})
+    if (ev.target.files) {
+      setUserObj({...userObj, [ev.target.id] : ev.target.files})
+    } else {
+      setUserObj({...userObj, [ev.target.id] : ev.target.value})
+    }
   }
 
   return (

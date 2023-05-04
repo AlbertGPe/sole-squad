@@ -8,7 +8,7 @@ import './UserProfile.css'
 function UserProfile() {
   const { id } = useParams()
   const [userProfile, setUserProfile] = useState()
-  const { user } = useContext(AuthContext)
+  const { user, logout } = useContext(AuthContext)
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -25,6 +25,7 @@ function UserProfile() {
 
   const handleDelete = () => {
     userService.remove(id);
+    logout()
     navigate('/login');
   }
 
@@ -48,7 +49,7 @@ function UserProfile() {
               )}
             </div>
             <div className='profile-sneakers-images'>
-              {userProfile.sneakers.map((sneaker)=> <Link to={`/sneakers/${sneaker.id}`}><img key={sneaker.id} className="m-2" src={sneaker.images} alt='' width={'250px'}/></Link>)}
+              {userProfile.sneakers?.map((sneaker, i)=> <Link to={`/sneakers/${sneaker.id}`} key={i}><img  className="m-2" src={sneaker.images} alt='' width={'250px'}/></Link>)}
             </div>
           </div>
         </div>

@@ -15,19 +15,21 @@ function UserCart() {
       navigate('/403')
     }
     setFiltereedCart(JSON.parse(localStorage.getItem('clientCart')))
-    setTotalPrice(total(filteredCart))
-  }, [filteredCart])
+    total();
+  }, [])
 
   const handleClickRemove = (sneaker) => {
     const filterDeleted = filteredCart.filter((cartItem) => cartItem.size !== sneaker.size || cartItem.sneaker.id !== sneaker.sneaker.id) 
     localStorage.setItem('clientCart', JSON.stringify(filterDeleted))
     setFiltereedCart(filterDeleted)
+    total();
   }
 
   const total = () => {
-    const prices = filteredCart?.map((sneaker) => Number(sneaker.sneaker.price))
+    const cart = JSON.parse(localStorage.getItem('clientCart'))
+    const prices = cart?.map((sneaker) => Number(sneaker.sneaker.price))
     let total = prices?.reduce((a, b) => a + b, 0)
-    return total
+    setTotalPrice(total)
   }
 
   return (
@@ -39,8 +41,8 @@ function UserCart() {
       ) : (
         <div className='container-cart mb-4'>
           <h1 className='text-center mb-5'><b>YOUR CART</b></h1>
-          {filteredCart?.map((sneaker) => 
-            <div key={sneaker.sneaker.id} className='d-flex justify-content-between border-bottom'>
+          {filteredCart?.map((sneaker, i) => 
+            <div key={i} className='d-flex justify-content-between border-bottom'>
               <div className='d-flex'>
                 <div className='me-4'>
                   <img src={sneaker.sneaker.images[0]} alt="" width={'200px'} className='my-2'/>

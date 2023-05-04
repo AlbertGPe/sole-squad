@@ -49,7 +49,7 @@ module.exports.update = (req, res, next) => {
   if (req.body.description) updateCriterial.description = req.body.description;
 
   if (req.body.instagramUrl) updateCriterial.instagramUrl = req.body.instagramUrl;
-  console.log(updateCriterial)
+ 
   Object.assign(req.user, updateCriterial);
   req.user
     .save()

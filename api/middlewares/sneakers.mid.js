@@ -4,6 +4,7 @@ const createError = require('http-errors')
 module.exports.exists = (req, res, next) => {
   Sneaker.findById(req.params.id)
     .populate('comments')
+    .populate('likes')
     .then((sneaker) => {
       if (sneaker) {
         req.sneaker = sneaker
@@ -16,7 +17,7 @@ module.exports.exists = (req, res, next) => {
 }
 
 module.exports.checkOwner = (req, res, next) => {
-  console.log(req.sneaker.user)
+
   if (
     !req.sneaker.user
   ) {

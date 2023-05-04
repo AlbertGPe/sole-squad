@@ -32,7 +32,6 @@ function SneakersPage() {
     } else {
       setFilterPrice(ev.target.value)
     }
-    console.log(ev.target.value)
   }
 
   //TAKE BRAND'S NAME, ONE OF EACH, THERE ARE NO REPEATED VALUES

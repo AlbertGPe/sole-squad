@@ -14,7 +14,7 @@ const secureMid = require('../middlewares/secure.mid')
 const storage = require('../config/cloudinary.config')
 
 router.get('/sneakers', sneakers.list)
-router.post('/sneakers', secureMid.auth, sneakers.create) //x-NEED LOGIN-x
+router.post('/sneakers', secureMid.auth, storage.user.single('images'), sneakers.create) //x-NEED LOGIN-x
 router.get('/sneakers/:id', sneakersMid.exists, sneakers.detail)
 router.delete('/sneakers/:id', secureMid.auth,  sneakersMid.exists, sneakersMid.checkOwner, sneakers.delete) //x-NEED LOGIN-x -- x-NEED OWNER-x
 router.patch('/sneakers/:id', secureMid.auth, sneakersMid.exists, sneakersMid.checkOwner, sneakers.update) //x-NEED LOGIN-x -- x-NEED OWNER-x

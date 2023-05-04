@@ -1,14 +1,19 @@
-import React, { createContext, useEffect, useState } from 'react'
+import React, { createContext, useEffect, useLayoutEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 const AuthContext = createContext();
 
 function AuthStore({ children }) {
-  const [user, setUser] = useState();
+  const [user, setUser] = useState(() => {
+    const user = localStorage.getItem('current-user');
+    if (user) {
+      return JSON.parse(user)
+    }
+  });
   const [cart, setCart] = useState();
   const navigate = useNavigate();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const user = localStorage.getItem('current-user');
     if (user) {
       handleUserChange(JSON.parse(user))
@@ -16,7 +21,6 @@ function AuthStore({ children }) {
   },[])
 
   const handleUserChange = (user) => {
-    console.log('User from AuthStore', user)
     if (!user) {
       localStorage.removeItem('current-user');
       localStorage.removeItem('user-access-token');
