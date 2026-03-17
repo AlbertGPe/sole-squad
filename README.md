@@ -224,14 +224,37 @@ npm start
 
 # Screenshots / Demo
 
-Suggested screenshots to include:
+* Login
+  
+<img width="1897" height="948" alt="Login" src="https://github.com/user-attachments/assets/9b1b918c-dd44-4e30-b4ce-446eecc392a2" />
 
 * Homepage sneaker catalog
+  
+<img width="1912" height="946" alt="Sneakers" src="https://github.com/user-attachments/assets/ff85f2bd-2225-43ef-a711-18ea4cc6a64e" />
+
 * Sneaker detail page
+  
+<img width="1917" height="947" alt="SneakerDetail" src="https://github.com/user-attachments/assets/008ff06d-33e7-4f27-aa67-92fe7e3d6222" />
+
 * Shopping cart
+  
+<img width="1917" height="948" alt="UserCart" src="https://github.com/user-attachments/assets/072c3fd7-f42e-4608-95e2-2777fb2a8ab7" />
+
+* Community Page
+  
+<img width="1919" height="947" alt="Community" src="https://github.com/user-attachments/assets/51be236d-3624-40df-8834-d3c6b9d9c4d7" />
+
 * Second-hand sneaker marketplace
+  
+<img width="1917" height="947" alt="Seconhand" src="https://github.com/user-attachments/assets/1a4a03ff-b6d6-4b63-a3ee-78f464b28d92" />
+
 * User listing management page
-* Product review section
+  
+<img width="1915" height="953" alt="UserSelling" src="https://github.com/user-attachments/assets/95b1bd4d-c748-4eae-94dc-f9b19a765d37" />
+
+* Sneaker detail seconhand
+  
+<img width="1919" height="951" alt="SneakerDetailSeconhand" src="https://github.com/user-attachments/assets/5943e748-e330-44f5-83b9-5c43891aa2d3" />
 
 ---
 
