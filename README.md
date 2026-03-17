@@ -265,9 +265,3 @@ Fullstack Web Developer
 
 GitHub:
 https://github.com/AlbertGPe
-
-Albert Garcia Pedrosa
-Fullstack Web Developer
-
-GitHub:
-https://github.com/AlbertGPe
