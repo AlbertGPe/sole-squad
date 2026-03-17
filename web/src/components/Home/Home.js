@@ -24,7 +24,7 @@ function Home() {
 
   return (
     <div className='homeBody'>
-      <img src={headerImg} alt='sneakers' className='w-100'/>
+      <img src={headerImg} alt='sneakers' className='w-100' />
       <div className='d-flex p-5'>
         <div>
           <img src={jordanGif} alt="airJordanGif" className='air-jordan-gif'/>

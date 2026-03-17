@@ -9,8 +9,7 @@ function SearchBar({ search, onSearch }) {
   }
 
   return (
-    <>
-      <i className="fa-light fa-magnifying-glass fa-beat-fade"></i>
+    <>    
       <Input type="text" value={search} onChange={handleSearch} className='m-4 no-submit' style={{height: '35px', width:'800px'}} placeholder='Search a sneaker'/>
     </>
   )
