@@ -7,7 +7,7 @@ function SneakerItem({ name, brand, gender, price, images, id }) {
   return (
     <Link to={`/sneakers/${id}`} style={{textDecoration: 'none', color: 'black'}}>
       <div className='img-sneakers-list'>
-        <img src={images[0]} className='img-sneakers-list-cover' alt="sneaker" width={'500px'}/>
+        <img src={images[0]} className='img-sneakers-list-cover' alt={name}/>
       </div>
       <div className='d-flex flex-column'>
         <span className='mt-2'><b>{name}</b></span>

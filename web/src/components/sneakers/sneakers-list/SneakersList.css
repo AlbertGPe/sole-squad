@@ -2,5 +2,61 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: stretch; 
+  gap: 20px;
+  padding: 10px;
+}
+
+.sneaker-list > div {
+  width: 100%;
+  max-width: 350px;
+}
+
+.img-sneakers-list {
+  text-align: center;
+  width: 100%;
+  height: 350px; 
+  display: flex;
   align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.img-sneakers-list:hover {
+  transform: scale(1.02);
+}
+
+.img-sneakers-list-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (max-width: 992px) {
+  .sneaker-list > div {
+    max-width: 300px;
+  }
+  
+  .img-sneakers-list {
+    height: 300px;
+  }
+}
+
+@media (max-width: 576px) {
+  .sneaker-list {
+    gap: 15px;
+    padding: 15px;
+  }
+  
+  .sneaker-list > div {
+    max-width: 100%;
+  }
+  
+  .img-sneakers-list {
+    height: 280px;
+  }
 }
