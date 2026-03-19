@@ -230,7 +230,7 @@ npm start
 
 * Homepage sneaker catalog
   
-<img width="1912" height="946" alt="Sneakers" src="https://github.com/user-attachments/assets/ff85f2bd-2225-43ef-a711-18ea4cc6a64e" />
+<img width="2642" height="1191" alt="Sneakers" src="https://github.com/user-attachments/assets/0e5b0256-83cd-4543-9b0c-0f3e6b26af62" />
 
 * Sneaker detail page
   
